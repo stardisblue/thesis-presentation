@@ -7,5 +7,12 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build"
+  },
+  "dependencies": {
+    "@types/d3": "^7.1.0",
+    "@types/lodash": "^4.14.179",
+    "d3": "^7.3.0",
+    "htl": "^0.3.1",
+    "lodash": "^4.17.21"
   }
 }
