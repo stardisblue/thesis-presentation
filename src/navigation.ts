@@ -8,7 +8,7 @@ type NavigationOptions = {
   nextKeys?: string[];
 };
 
-export function initNavigation({
+export function navigation({
   max = 0,
   previousKeys = ['ArrowUp', 'ArrowLeft', 'KeyH', 'KeyK', 'KeyW', 'KeyA'],
   nextKeys = [
@@ -28,9 +28,11 @@ export function initNavigation({
   const listeners: {
     previous: ((page: number) => void) | undefined;
     next: ((page: number) => void) | undefined;
+    page: ((page: number) => void) | undefined;
   } = {
     previous: undefined,
     next: undefined,
+    page: undefined,
   };
 
   const nav = {
@@ -38,14 +40,16 @@ export function initNavigation({
     previousPage() {
       if (nav.current > 0) {
         nav.current--;
-        if (listeners.next) listeners.next(nav.current);
+        if (listeners.previous) listeners.previous(nav.current);
+        if (listeners.page) listeners.page(nav.current);
       }
       return nav;
     },
     nextPage() {
-      if (nav.current < max) {
+      if (nav.current < max - 1) {
         nav.current++;
         if (listeners.next) listeners.next(nav.current);
+        if (listeners.page) listeners.page(nav.current);
       }
       return nav;
     },
@@ -58,7 +62,7 @@ export function initNavigation({
         .on('mouseleave', blur);
       return nav;
     },
-    on(type: 'previous' | 'next', listener?: (page: number) => void) {
+    on(type: 'previous' | 'next' | 'page', listener?: (page: number) => void) {
       listeners[type] = listener;
       return nav;
     },
