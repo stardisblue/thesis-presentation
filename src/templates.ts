@@ -33,9 +33,11 @@ export function Page({ lazy = true }: { lazy?: boolean } = {}) {
       function updatePage({ template = 'full', ...props }: PageObject) {
         $page.classList.toggle('items-center', template === 'title');
 
-        $page.$title.replaceChildren(create(props.title, data));
+        if (lazy) $page.$title.replaceChildren(...$hidden.$title.children);
+        else $page.$title.replaceChildren(create(props.title, data));
 
-        $page.$content.replaceChildren(create(props.content, data));
+        if (lazy) $page.$content.replaceChildren(...$hidden.$content.children);
+        else $page.$content.replaceChildren(create(props.content, data));
         $page.$content.classList.toggle('flex-grow-1', template === 'full');
 
         $page.$footer.replaceChildren(create(props.footer, data));
