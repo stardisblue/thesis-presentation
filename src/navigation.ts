@@ -8,6 +8,12 @@ type NavigationOptions = {
   nextKeys?: string[];
 };
 
+type NavigationCallback = (
+  page: number,
+  previous: number,
+  nav: ReturnType<typeof navigation>
+) => void;
+
 export function navigation({
   max = 0,
   previousKeys = ['ArrowUp', 'ArrowLeft', 'KeyH', 'KeyK', 'KeyW', 'KeyA'],
@@ -26,9 +32,9 @@ export function navigation({
     next: keyBy(nextKeys),
   };
   const listeners: {
-    previous: ((page: number) => void) | undefined;
-    next: ((page: number) => void) | undefined;
-    page: ((page: number) => void) | undefined;
+    previous: NavigationCallback | undefined;
+    next: NavigationCallback | undefined;
+    page: NavigationCallback | undefined;
   } = {
     previous: undefined,
     next: undefined,
@@ -38,18 +44,34 @@ export function navigation({
   const nav = {
     current: 0,
     previousPage() {
-      if (nav.current > 0) {
+      const last = nav.current;
+      if (last > 0) {
         nav.current--;
-        if (listeners.previous) listeners.previous(nav.current);
-        if (listeners.page) listeners.page(nav.current);
+        if (listeners.previous) listeners.previous(nav.current, last, nav);
+        if (listeners.page) listeners.page(nav.current, last, nav);
       }
       return nav;
     },
     nextPage() {
-      if (nav.current < max - 1) {
+      const last = nav.current;
+      if (last < max - 1) {
         nav.current++;
-        if (listeners.next) listeners.next(nav.current);
-        if (listeners.page) listeners.page(nav.current);
+        if (listeners.next) listeners.next(nav.current, last, nav);
+        if (listeners.page) listeners.page(nav.current, last, nav);
+      }
+      return nav;
+    },
+    peek(qte: number = 1) {
+      const bounded = Math.max(Math.min(qte + nav.current, max - 1), 0);
+      if (bounded !== nav.current) {
+        return bounded;
+      }
+    },
+    page(goto: number) {
+      if (goto !== nav.current) {
+        const last = nav.current;
+        nav.current = Math.max(Math.min(goto, max - 1), 0);
+        if (listeners.page) listeners.page(nav.current, last, nav);
       }
       return nav;
     },
@@ -62,7 +84,7 @@ export function navigation({
         .on('mouseleave', blur);
       return nav;
     },
-    on(type: 'previous' | 'next' | 'page', listener?: (page: number) => void) {
+    on(type: 'previous' | 'next' | 'page', listener?: NavigationCallback) {
       listeners[type] = listener;
       return nav;
     },
