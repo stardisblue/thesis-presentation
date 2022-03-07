@@ -11,7 +11,7 @@ import { PageObject, Pages } from './pages';
     $entry.append($page);
 
     const pages: (PageObject | ((page: number) => any))[] = [
-      couverture,
+      await couverture(),
       (page: number) => ({
         title: `ProsoVis`,
         content: html`<div>hello world</div>`,

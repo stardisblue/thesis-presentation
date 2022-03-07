@@ -12,17 +12,13 @@ type PageElement = HTMLElement & {
   $footer: HTMLElement;
 };
 
-async function SimplePage<T>(
+function SimplePage<T>(
   { template = 'full', ...props }: PageObject,
   data: T
-): Promise<PageElement> {
-  const $title = html`<h2 class="measure">
-    ${await create(props.title, data)}
-  </h2>`;
-  const $content = html`<div>${await create(props.content, data)}</div>`;
-  const $footer = html`<div class="pt5">
-    ${await create(props.footer, data)}
-  </div>`;
+): PageElement {
+  const $title = html`<h2 class="measure">${create(props.title, data)}</h2>`;
+  const $content = html`<div>${create(props.content, data)}</div>`;
+  const $footer = html`<div class="pt5">${create(props.footer, data)}</div>`;
 
   const $page = html`<div class="h-100 w-100" style="padding: 5% 7%;" />
     <div class="h-100 w-100 flex flex-column">
@@ -42,7 +38,7 @@ export function Pages({
   Template = SimplePage,
 }: {
   lazy?: number;
-  Template?: (props: PageObject, data: any) => Promise<PageElement>;
+  Template?: (props: PageObject, data: any) => PageElement;
 } = {}) {
   const cache = new Map<PageState<any>, PageElement>();
   const history = new Map<PageState<any>, number>();
@@ -55,7 +51,7 @@ export function Pages({
   />`;
 
   return Object.assign($container, {
-    async load<T>(newState: PageState<T>, data: T) {
+    load<T>(newState: PageState<T>, data: T) {
       //   console.log('load', cache.has(newState), data);
       let currentPage;
       if (cache.has(newState)) {
@@ -63,7 +59,7 @@ export function Pages({
         currentPage = cache.get(newState)!;
       } else {
         const props = typeof newState === 'object' ? newState : newState(data);
-        currentPage = await Template(props, data);
+        currentPage = Template(props, data);
         cache.set(newState, currentPage);
       }
 
@@ -85,13 +81,13 @@ export function Pages({
         }
       });
     },
-    async preload<T>(step: number, newState: PageState<T>, data: T) {
+    preload<T>(step: number, newState: PageState<T>, data: T) {
       if (step > lazy) return false; // do not preload more pages than necessary
 
       if (!cache.has(newState)) {
         // checks in cache
         const props = typeof newState === 'object' ? newState : newState(data);
-        const page = await Template(props, data);
+        const page = Template(props, data);
         cache.set(newState, page);
         $container.append(page);
       }
@@ -107,8 +103,7 @@ export function Pages({
   });
 }
 
-async function create<T>(res: any, data: T): Promise<string | Node> {
-  res = await res;
+function create<T>(res: any, data: T): string | Node {
   if (typeof res === 'string') return res;
   if (res instanceof Text) return res;
   if (res instanceof DocumentFragment) return res;
