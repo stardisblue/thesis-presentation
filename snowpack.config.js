@@ -15,6 +15,7 @@ module.exports = {
     /* ... */
   },
   buildOptions: {
+    baseUrl: '/thesis-presentation',
     /* ... */
   },
 };
