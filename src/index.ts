@@ -1,4 +1,3 @@
-import { html } from "htl";
 import { navigation } from "./navigation";
 import couverture from "./pages/couverture";
 import { PageObject, Pages } from "./pages";
