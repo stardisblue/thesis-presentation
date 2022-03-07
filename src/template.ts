@@ -1,7 +1,10 @@
 /**https://github.com/observablehq/stdlib/blob/924d8f801075d29e595eb72fede8d2736f4da550/src/template.js */
 
-export default function template(render: any, wrapper: any) {
-  return function (strings: any) {
+export default function template(
+  render: (str: string) => Element,
+  wrapper: () => Element
+) {
+  return function (strings: TemplateStringsArray, ...args: any[]) {
     var string = strings[0],
       parts = [],
       part,
@@ -20,14 +23,14 @@ export default function template(render: any, wrapper: any) {
       part = arguments[i];
       if (part instanceof Node) {
         parts[++k] = part;
-        string += '<!--o:' + k + '-->';
+        string += "<!--o:" + k + "-->";
       } else if (Array.isArray(part)) {
         for (j = 0, m = part.length; j < m; ++j) {
           node = part[j];
           if (node instanceof Node) {
             if (root === null) {
               parts[++k] = root = document.createDocumentFragment();
-              string += '<!--o:' + k + '-->';
+              string += "<!--o:" + k + "-->";
             }
             root.appendChild(node);
           } else {
@@ -72,7 +75,7 @@ export default function template(render: any, wrapper: any) {
     // … a document fragment? Replace the fragment with an element.
     // … some other node? Return it.
     return root.childNodes.length === 1
-      ? root.removeChild(root.firstChild)
+      ? (root.removeChild(root.firstChild!) as Element)
       : root.nodeType === 11
       ? ((node = wrapper()).appendChild(root), node)
       : root;
