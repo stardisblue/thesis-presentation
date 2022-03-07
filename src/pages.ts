@@ -45,7 +45,7 @@ export function Pages({
   let steps = 0;
 
   const $container = html`<div
-    class="h-100 w-100 overflow-hidden helvetica"
+    class="h-100 w-100 overflow-y-hidden helvetica"
     tabindex="0"
     style="font-size: 3vh"
   />`;

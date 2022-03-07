@@ -1,11 +1,12 @@
 import { html } from 'htl';
-import { md } from '../library';
+import Library from '../library';
 import logos from '../data/logos';
 import jury from '../data/jury';
 import type { PageObject } from '../pages';
 
 const formatJury = jury.map(({ name, qualite, labo, univ, status }) => [
-  [name, qualite, labo, univ].join(', '),
+  name,
+  [qualite, labo, univ].join(', '),
   status,
 ]);
 
@@ -13,7 +14,8 @@ const page: PageObject = {
   template: 'title',
   title: html`Réduction de l'encombrement visuel : application à la
   visualisation et à l'exploration de données prosopographiques`,
-  content: md`
+  content: async () =>
+    (await Library()).md`
 
 **Fati CHEN**
 
@@ -23,7 +25,7 @@ Co-encadrant de thèse : **Arnaud SALLABERRY**
 Le *DATE DE SOUTENANCE*
 
 <table class="w-100" style="font-size:0.8em">
-${formatJury.map(([a, b]) => `<tr><td>${a}</td><td>${b}</td>`).join('\n')}
+${formatJury.map((a) => `<tr><td>${a.join('</td><td>')}</td>`)}
   </table>`,
   footer: html`<div
     class="flex-grow-1"

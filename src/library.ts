@@ -1,5 +1,7 @@
 import { Library } from '@observablehq/stdlib';
 const lib: any = {};
 Library.bind(lib)();
-export const md = await lib.md();
-export const tex = await lib.tex();
+
+export default async function () {
+  return { md: await lib.md(), tex: await lib.tex() };
+}
