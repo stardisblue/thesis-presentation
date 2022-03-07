@@ -2,6 +2,7 @@ import { html } from 'htl';
 import { navigation } from './navigation';
 import couverture from './pages/couverture';
 import { PageObject, Pages } from './pages';
+import tex from './tex';
 
 (async function () {
   const $entry = document.querySelector('#hero');
@@ -14,7 +15,7 @@ import { PageObject, Pages } from './pages';
       await couverture(),
       (page: number) => ({
         title: `ProsoVis`,
-        content: html`<div>hello world</div>`,
+        content: html`<div>hello world ${tex`\frac{1}{hello \cup test}`}</div>`,
         footer: html`<p>${page}</p>`,
       }),
       (page: number) => ({
