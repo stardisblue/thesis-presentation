@@ -51,7 +51,9 @@ function sum(a, b) {
       }),
       (page: number) => ({
         title: `FSAC5`,
-        content: html`<div>hello world</div>`,
+        content: html`<div>
+          hello world ${tex.block`\frac{1}{hello \cup test}`}
+        </div>`,
         footer: html`<p>${page}</p>`,
       }),
       (page: number) => ({
