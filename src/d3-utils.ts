@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 export function properties<
   GElement extends d3.BaseType,
@@ -11,7 +11,7 @@ export function properties<
     [key: string]: any;
   }
 ) {
-  _.each(properties, ([key, value]) => {
+  _.each(properties, (value, key) => {
     selection.property(key, value);
   });
 
@@ -76,7 +76,7 @@ export function styles<
   selection: d3.Selection<GElement, Datum, PElement, PDatum>,
   styles: { [k: string]: any }
 ) {
-  _.each(styles, ([key, value]) => {
+  _.each(styles, (value, key) => {
     selection.style(key, value);
   });
   return selection;
@@ -91,7 +91,7 @@ export function attrs<
   selection: d3.Selection<GElement, Datum, PElement, PDatum>,
   attributes: { [k: string]: any }
 ) {
-  _.each(attributes, ([key, value]) => {
+  _.each(attributes, (value, key) => {
     selection.attr(key, value);
   });
   return selection;
@@ -134,7 +134,7 @@ export function build<
     const _el = group.append(append).call(attrs, attributes);
     if (classed) {
       _el.classed(classed, true); // wip on this part i suppose
-      console.warn('using classed is still WIP, it only enables classes');
+      console.warn("using classed is still WIP, it only enables classes");
     }
     if (text) _el.text(text);
     if (style) styles(_el, style);

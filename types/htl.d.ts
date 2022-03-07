@@ -1,9 +1,8 @@
-declare module 'htl' {
-  declare interface html {
-    (arr: TemplateStringsArray, ...args: any[]): HTMLElement;
+declare module "htl" {
+  declare interface html { 
     fragment: (arr: TemplateStringsArray, ...args: any[]) => HTMLElement;
   }
-  declare const html: html;
+  declare const html: (strings: TemplateStringsArray, ...args: any[]): HTMLElement;
 
   declare function svg(arr: TemplateStringsArray, ...args: any[]): SVGElement;
 }

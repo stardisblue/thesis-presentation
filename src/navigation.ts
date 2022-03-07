@@ -1,11 +1,12 @@
-import * as d3 from 'd3';
-import { identity, keyBy, max, range } from 'lodash';
-import { focus, blur, preventDefault } from './event-utils';
+import * as d3 from "d3";
+import { identity, keyBy, max, range } from "lodash";
+import { focus, blur, preventDefault } from "./event-utils";
 
 type NavigationOptions = {
   max?: number;
   previousKeys?: string[];
   nextKeys?: string[];
+  stopPropagation?: boolean;
 };
 
 type NavigationCallback = (
@@ -16,16 +17,17 @@ type NavigationCallback = (
 
 export function navigation({
   max = 0,
-  previousKeys = ['ArrowUp', 'ArrowLeft', 'KeyH', 'KeyK', 'KeyW', 'KeyA'],
+  previousKeys = ["ArrowUp", "ArrowLeft", "KeyH", "KeyK", "KeyW", "KeyA"],
   nextKeys = [
-    'ArrowDown',
-    'ArrowRight',
-    'KeyJ',
-    'KeyL',
-    'KeyS',
-    'KeyD',
-    'Space',
+    "ArrowDown",
+    "ArrowRight",
+    "KeyJ",
+    "KeyL",
+    "KeyS",
+    "KeyD",
+    "Space",
   ],
+  stopPropagation = false,
 }: NavigationOptions = {}) {
   const keys = {
     previous: keyBy(previousKeys),
@@ -43,19 +45,21 @@ export function navigation({
 
   const nav = {
     current: 0,
-    previousPage() {
+    previousPage(event?: UIEvent) {
       const last = nav.current;
       if (last > 0) {
         nav.current--;
+        if (stopPropagation && event) event.stopPropagation();
         if (listeners.previous) listeners.previous(nav.current, last, nav);
         if (listeners.page) listeners.page(nav.current, last, nav);
       }
       return nav;
     },
-    nextPage() {
+    nextPage(event?: UIEvent) {
       const last = nav.current;
       if (last < max - 1) {
         nav.current++;
+        if (stopPropagation && event) event.stopPropagation();
         if (listeners.next) listeners.next(nav.current, last, nav);
         if (listeners.page) listeners.page(nav.current, last, nav);
       }
@@ -75,25 +79,28 @@ export function navigation({
     },
     bind: ($div: HTMLElement) => {
       d3.select($div)
-        .on('pointerup', nav.events.onClick)
-        .on('keydown', nav.events.onKeyDown)
-        .on('contextmenu', preventDefault) // avoid opening context menu on right click
-        .on('mouseenter', focus)
-        .on('mouseleave', blur);
+        .on("pointerup", nav.events.onClick)
+        .on("keydown", nav.events.onKeyDown)
+        .on("contextmenu", preventDefault) // avoid opening context menu on right click
+        .on("mouseenter", focus)
+        .on("mouseleave", blur);
       return nav;
     },
-    on(type: 'previous' | 'next' | 'page', listener?: NavigationCallback) {
+    on(type: "previous" | "next" | "page", listener?: NavigationCallback) {
       listeners[type] = listener;
       return nav;
     },
+    first() {
+      if (listeners.page) listeners.page(0, 0, nav);
+    },
     events: {
-      onClick(e: MouseEvent) {
-        if (e.button === 2) nav.previousPage();
-        else if (e.button === 0) nav.nextPage();
+      onClick(event: MouseEvent) {
+        if (event.button === 2) nav.previousPage(event);
+        else if (event.button === 0) nav.nextPage(event);
       },
-      onKeyDown(e: KeyboardEvent) {
-        if (e.code in keys.previous) nav.previousPage();
-        else if (e.code in keys.next) nav.nextPage();
+      onKeyDown(event: KeyboardEvent) {
+        if (event.code in keys.previous) nav.previousPage(event);
+        else if (event.code in keys.next) nav.nextPage(event);
       },
     },
   };

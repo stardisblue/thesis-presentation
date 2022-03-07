@@ -4,21 +4,17 @@ import couverture from "./pages/couverture";
 import { PageObject, Pages } from "./pages";
 import tex from "./tex";
 import md from "./md";
+import intro from "./agora/intro";
 
 (function () {
   const $entry = document.querySelector("#hero");
 
   if ($entry) {
-    const $page = Pages();
+    const $page = Pages({ lazy: 2 });
     $entry.append($page);
 
     const pages: (PageObject | ((page: number) => any))[] = [
       couverture,
-      (page: number) => ({
-        title: `ProsoVis`,
-        content: html`<div>hello world ${tex`\frac{1}{hello \cup test}`}</div>`,
-        footer: html`<p>${page}</p>`,
-      }),
       (page: number) => ({
         title: `AGORA`,
         content: md`
@@ -36,10 +32,15 @@ function sum(a, b) {
         `,
         footer: md`<p>${page}</p>`,
       }),
+      intro,
       (page: number) => ({
-        title: `FSAC`,
+        title: `AGORA`,
         content: md`
-~~~javascript
+<div>hello world</div>
+
+${tex.block`\frac{1}{hello \cup test}`}
+
+~~~js
 const i = j;
 i++;
 function sum(a, b) {
@@ -47,23 +48,9 @@ function sum(a, b) {
 }
 ~~~
         `,
-        footer: html`<p>${page}</p>`,
-      }),
-      (page: number) => ({
-        title: `FSAC5`,
-        content: html`<div>
-          hello world ${tex.block`\frac{1}{hello \cup test}`}
-        </div>`,
-        footer: html`<p>${page}</p>`,
-      }),
-      (page: number) => ({
-        title: `FSAC6`,
-        content: html`<div>hello world</div>`,
-        footer: html`<p>${page}</p>`,
+        footer: md`<p>${page}</p>`,
       }),
     ];
-
-    $page.load(pages[0], 1);
 
     navigation({ max: pages.length })
       .on("page", (page, _prev, nav) => {
@@ -72,7 +59,8 @@ function sum(a, b) {
           $page.preload(i + 1, pages[v], v + 1);
         });
       })
-      .bind($page);
+      .bind($page)
+      .first();
   }
 })();
 
