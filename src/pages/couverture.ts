@@ -1,8 +1,8 @@
 import { html } from 'htl';
 import { md } from '../library';
-import type { PageObject } from 'src/templates';
 import logos from '../data/logos';
 import jury from '../data/jury';
+import type { PageObject } from '../pages';
 
 const formatJury = jury.map(({ name, qualite, labo, univ, status }) => [
   [name, qualite, labo, univ].join(', '),

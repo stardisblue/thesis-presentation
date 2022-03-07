@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { identity, keyBy, max } from 'lodash';
+import { identity, keyBy, max, range } from 'lodash';
 import { focus, blur, preventDefault } from './event-utils';
 
 type NavigationOptions = {
@@ -61,11 +61,9 @@ export function navigation({
       }
       return nav;
     },
-    peek(qte: number = 1) {
-      const bounded = Math.max(Math.min(qte + nav.current, max - 1), 0);
-      if (bounded !== nav.current) {
-        return bounded;
-      }
+    collect(offset: number = 1) {
+      const bounded = Math.max(Math.min(offset + nav.current, max - 1), 0);
+      return range(nav.current + 1, bounded + 1, Math.sign(offset));
     },
     page(goto: number) {
       if (goto !== nav.current) {
