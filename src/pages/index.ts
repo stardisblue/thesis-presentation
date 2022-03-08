@@ -6,7 +6,7 @@ import couverture from './couverture';
 
 const pages: (PageObject | ((page: number) => any))[] = [
   couverture,
-  (page: number) => ({
+  (page) => ({
     title: `AGORA`,
     content: md`
 <div>hello world</div>
@@ -24,7 +24,7 @@ return a + b;
     footer: md`${page}`,
   }),
   intro,
-  (page: number) => ({
+  (page) => ({
     title: `AGORA`,
     content: md`
 <div>hello world</div>

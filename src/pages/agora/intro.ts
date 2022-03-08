@@ -30,11 +30,22 @@ const introStates = (() => {
       graph: graphstate1,
       caption: md`Affichés avec leurs labels ${tex`\forall v \in V, (w_v, h_v)`}`,
     },
-    { graph: combined, point: true, caption: md`— ${tex`\ `}` },
-    { graph: combined, caption: md`— ${tex`\ `}` },
+    {
+      graph: combined,
+      point: true,
+      caption: md`
+—
+      `,
+    },
+    {
+      graph: combined,
+      caption: md`
+—
+      `,
+    },
     {
       graph: { nodes: nodesVPSC, edges: combined.edges },
-      caption: md`${tex`\mathcal{E}'_G(v)`} Résultat souhaité (généré avec VPSC)`,
+      caption: md`<p>${tex`\mathcal{E}'_G(v)`} Résultat souhaité (généré avec VPSC)`,
     },
   ];
 })();
@@ -194,18 +205,21 @@ function graphIntro(
 
 export default {
   title: mdi`test`,
-  content: () => {
-    const $page = html`<div>
-      <svg width="100%" height="100%" viewbox=${[-5, -5, 430, 230]}></svg>
-      <div id="caption" style=${{ fontSize: '0.75em', color: 'gray' }}></div>
-    </div>`;
+  content: (page: number, $holder: HTMLDivElement) => {
+    $holder.classList.add('flex');
+    $holder.classList.add('flex-column');
+    $holder.style.height = $holder.getBoundingClientRect().height + 'px';
+    $holder.append(html.fragment`
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        viewbox=${[-5, -5, 430, 230]}
+      ></svg>
+      <div id="caption" style=${{ fontSize: '0.75em', color: 'gray' }}></div>`);
 
-    const nav = navigation({ max: introStates.length, stopPropagation: true })
-      .on('page', (page) => graphIntro(0, introStates[page], $page))
-      .bind($page)
+    navigation({ max: introStates.length, stopPropagation: true })
+      .on('page', (page) => graphIntro(0, introStates[page], $holder))
+      .bind($holder)
       .first();
-
-    return $page;
   },
   footer: (page: number) => mdi`${page}`,
 };

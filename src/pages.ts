@@ -3,13 +3,18 @@ import { html } from 'htl';
 
 export type PageObject = {
   template?: 'title' | 'full';
-  [key: string]: string | Element | Function | undefined;
+  [key: string]:
+    | string
+    | Element
+    | ((data: any, $holder: HTMLDivElement) => string | Element | void)
+    | undefined;
 };
 
 type PageElement = HTMLElement & {
   $title: HTMLElement;
   $content: HTMLElement;
   $footer: HTMLElement;
+  render: () => void;
 };
 
 function SimplePage<T>(
@@ -19,7 +24,7 @@ function SimplePage<T>(
   const $title = html`<h2 class="measure noto">
     ${create(props.title, data)}
   </h2>`;
-  const $content = html`<div>${create(props.content, data)}</div>`;
+  const $content = html`<div></div>`;
   const $footer = html`<div class="pt5">${create(props.footer, data)}</div>`;
 
   const $page = html`<div class="slides h-100 w-100 flex roboto" />
@@ -28,7 +33,18 @@ function SimplePage<T>(
   $page.classList.toggle('items-center', template === 'title');
   $content.classList.toggle('flex-grow-1', template === 'full');
 
-  return Object.assign($page, { $title, $content, $footer });
+  const $RenderSimplePage = Object.assign($page, {
+    $title,
+    $content,
+    $footer,
+    render() {
+      const $el = create(props.content, data, $content);
+      if ($el) $content.append($el);
+      $RenderSimplePage.render = () => {};
+    },
+  });
+
+  return $RenderSimplePage;
 }
 
 type PageState<D> = PageObject | ((data: D) => PageObject);
@@ -67,7 +83,7 @@ export function Pages({
         // replace
         $container.insertBefore(currentPage, $container.firstChild);
       else $container.append(currentPage); // append
-
+      currentPage.render();
       // add to history
       steps++;
       history.set(newState, steps);
@@ -90,6 +106,7 @@ export function Pages({
         const page = Template(props, data);
         cache.set(newState, page);
         $container.append(page);
+        page.render();
       }
 
       history.set(newState, steps); // update ranking in history
@@ -103,7 +120,8 @@ export function Pages({
   });
 }
 
-function create<T>(res: any, data: T): string | Node {
+function create<T>(res: any, ...rest: [T, ...any]): null | string | Node {
+  if (!res) return null;
   if (typeof res === 'string') return res;
   if (res instanceof Text) return res;
   if (res instanceof DocumentFragment) return res;
@@ -111,5 +129,5 @@ function create<T>(res: any, data: T): string | Node {
   if (res instanceof d3.selection || res instanceof d3.transition)
     return (res as any).node();
 
-  return create(res(data), data);
+  return create(res(...rest), ...rest);
 }
