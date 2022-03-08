@@ -1,18 +1,18 @@
-import { html } from "htl";
-import logos from "../data/logos";
-import jury from "../data/jury";
-import type { PageObject } from "../pages";
-import md from "../md";
+import { html } from 'htl';
+import logos from '../data/logos';
+import jury from '../data/jury';
+import type { PageObject } from '../pages';
+import md from '../md';
 
 const formatJury = jury.map(({ titre, name, qualite, labo, univ, status }) => [
   titre,
   name,
-  [qualite, labo, univ].join(", "),
+  [qualite, labo, univ].join(', '),
   status,
 ]);
 
 const page: PageObject = {
-  template: "title",
+  template: 'title',
   title: html`Réduction de l'encombrement visuel : application à la
   visualisation et à l'exploration de données prosopographiques`,
   content: md`**Fati CHEN**
@@ -20,10 +20,10 @@ const page: PageObject = {
 Directeur de thèse : **Pascal PONCELET**<br/>
 Co-encadrant de thèse : **Arnaud SALLABERRY**
 
-Le *DATE DE SOUTENANCE*
+Le *Date De Soutenance*
 
 <table class="w-100" style="font-size:0.8em">
-${formatJury.map((a) => `<tr><td>${a.join("</td><td>")}</td>`)}
+${formatJury.map((a) => `<tr><td>${a.join('</td><td>')}</td>`)}
   </table>`,
   footer: html`<div
     class="flex-grow-1"

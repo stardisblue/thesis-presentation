@@ -16,14 +16,14 @@ function SimplePage<T>(
   { template = 'full', ...props }: PageObject,
   data: T
 ): PageElement {
-  const $title = html`<h2 class="measure">${create(props.title, data)}</h2>`;
+  const $title = html`<h2 class="measure noto">
+    ${create(props.title, data)}
+  </h2>`;
   const $content = html`<div>${create(props.content, data)}</div>`;
   const $footer = html`<div class="pt5">${create(props.footer, data)}</div>`;
 
-  const $page = html`<div class="h-100 w-100" style="padding: 5% 7%;" />
-    <div class="h-100 w-100 flex flex-column">
-      ${$title} ${$content} ${$footer}
-    </div>`;
+  const $page = html`<div class="slides h-100 w-100 flex roboto" />
+    <div class="w-100 flex flex-column">${$title} ${$content} ${$footer}</div>`;
 
   $page.classList.toggle('items-center', template === 'title');
   $content.classList.toggle('flex-grow-1', template === 'full');
@@ -45,9 +45,9 @@ export function Pages({
   let steps = 0;
 
   const $container = html`<div
-    class="h-100 w-100 overflow-y-hidden helvetica"
-    tabindex="0"
+    class="h-100 w-100 overflow-y-hidden"
     style="font-size: 3vh"
+    tabindex="0"
   />`;
 
   return Object.assign($container, {
