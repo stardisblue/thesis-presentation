@@ -1,6 +1,6 @@
-import { marked } from 'marked';
-import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
+import { marked } from 'marked';
+import hljs from 'highlight.js/lib/common';
 import template from './template';
 
 const options: marked.MarkedOptions = {
@@ -12,30 +12,23 @@ const options: marked.MarkedOptions = {
 
 marked.setOptions(options);
 
-function createmd() {
-  return template(
-    function (string) {
-      const root = document.createElement('div');
-      root.innerHTML = marked.parse(string).trim();
-      return root;
-    },
-    function () {
-      return document.createElement('div');
-    }
-  );
-}
-function createmdi() {
-  return template(
-    function (string) {
-      const root = document.createElement('div');
-      root.innerHTML = marked.parseInline(string).trim();
-      return root;
-    },
-    function () {
-      return document.createElement('div');
-    }
-  );
-}
-
-export default createmd();
-export const mdi = createmdi();
+export default template(
+  function (string) {
+    const root = document.createElement('div');
+    root.innerHTML = marked.parse(string).trim();
+    return root;
+  },
+  function () {
+    return document.createElement('div');
+  }
+);
+export const mdi = template(
+  function (string) {
+    const root = document.createElement('div');
+    root.innerHTML = marked.parseInline(string).trim();
+    return root;
+  },
+  function () {
+    return document.createElement('div');
+  }
+);
