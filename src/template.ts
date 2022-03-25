@@ -4,7 +4,7 @@ export default function template(
   render: (str: string) => Element,
   wrapper: () => Element
 ) {
-  return function (strings: TemplateStringsArray, ...args: any[]) {
+  return function (strings: TemplateStringsArray, ..._args: any[]) {
     var string = strings[0],
       parts = [],
       part,
@@ -23,14 +23,14 @@ export default function template(
       part = arguments[i];
       if (part instanceof Node) {
         parts[++k] = part;
-        string += "<!--o:" + k + "-->";
+        string += '<!--o:' + k + '-->';
       } else if (Array.isArray(part)) {
         for (j = 0, m = part.length; j < m; ++j) {
           node = part[j];
           if (node instanceof Node) {
             if (root === null) {
               parts[++k] = root = document.createDocumentFragment();
-              string += "<!--o:" + k + "-->";
+              string += '<!--o:' + k + '-->';
             }
             root.appendChild(node);
           } else {

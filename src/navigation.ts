@@ -1,6 +1,6 @@
-import * as d3 from "d3";
-import { identity, keyBy, max, range } from "lodash";
-import { focus, blur, preventDefault } from "./event-utils";
+import * as d3 from 'd3';
+import { keyBy, range } from 'lodash';
+import { focus, blur, preventDefault } from './event-utils';
 
 type NavigationOptions = {
   max?: number;
@@ -17,15 +17,15 @@ type NavigationCallback = (
 
 export function navigation({
   max = 0,
-  previousKeys = ["ArrowUp", "ArrowLeft", "KeyH", "KeyK", "KeyW", "KeyA"],
+  previousKeys = ['ArrowUp', 'ArrowLeft', 'KeyH', 'KeyK', 'KeyW', 'KeyA'],
   nextKeys = [
-    "ArrowDown",
-    "ArrowRight",
-    "KeyJ",
-    "KeyL",
-    "KeyS",
-    "KeyD",
-    "Space",
+    'ArrowDown',
+    'ArrowRight',
+    'KeyJ',
+    'KeyL',
+    'KeyS',
+    'KeyD',
+    'Space',
   ],
   stopPropagation = false,
 }: NavigationOptions = {}) {
@@ -79,14 +79,14 @@ export function navigation({
     },
     bind: ($div: HTMLElement) => {
       d3.select($div)
-        .on("pointerup", nav.events.onClick)
-        .on("keydown", nav.events.onKeyDown)
-        .on("contextmenu", preventDefault) // avoid opening context menu on right click
-        .on("mouseenter", focus)
-        .on("mouseleave", blur);
+        .on('pointerup', nav.events.onClick)
+        .on('keydown', nav.events.onKeyDown)
+        .on('contextmenu', preventDefault) // avoid opening context menu on right click
+        .on('mouseenter', focus)
+        .on('mouseleave', blur);
       return nav;
     },
-    on(type: "previous" | "next" | "page", listener?: NavigationCallback) {
+    on(type: 'previous' | 'next' | 'page', listener?: NavigationCallback) {
       listeners[type] = listener;
       return nav;
     },

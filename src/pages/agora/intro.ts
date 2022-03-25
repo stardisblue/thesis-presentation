@@ -162,7 +162,7 @@ function nodelife(point: any) {
 }
 
 function graphIntro(
-  id: any,
+  _id: any,
   { graph: { nodes, edges }, caption = '', point = false }: any,
   $div: any
 ) {
@@ -205,7 +205,7 @@ function graphIntro(
 
 export default {
   title: mdi`test`,
-  content: (page: number, $holder: HTMLDivElement) => {
+  content: (_page: number, $holder: HTMLDivElement) => {
     $holder.classList.add('flex');
     $holder.classList.add('flex-column');
     $holder.style.height = $holder.getBoundingClientRect().height + 'px';

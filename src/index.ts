@@ -1,5 +1,6 @@
 import { navigation } from './navigation';
 import { Pages } from './pages';
+import 'tachyons/css/tachyons.min.css';
 import './css/style.css';
 import pages from './pages/index';
 
