@@ -26,7 +26,7 @@ pages:
     - yarn build # Build for prod
     # - cp public/index.html public/404.html # Not necessary, but helps with https://medium.com/@pshrmn/demystifying-single-page-applications-3068d0555d46
     # - mv public _public # CRA and gitlab pages both use the public folder. Only do this in a build pipeline.
-    # - mkdir public/
+    - mkdir public/
     - cp -rf dist/* public/
     - mv dist public/$CI_PIPELINE_ID/ # Move build files to public dir for Gitlab Pages
   artifacts:
