@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { keyBy, range } from 'lodash';
-import { focus, blur, preventDefault } from './event-utils';
+import { focus, preventDefault } from './event-utils';
 
 type NavigationOptions = {
   max?: number;
@@ -45,11 +45,12 @@ export function navigation({
 
   const nav = {
     current: 0,
+    max,
     previousPage(event?: UIEvent) {
       const last = nav.current;
       if (last > 0) {
-        nav.current--;
         if (stopPropagation && event) event.stopPropagation();
+        nav.current--;
         if (listeners.previous) listeners.previous(nav.current, last, nav);
         if (listeners.page) listeners.page(nav.current, last, nav);
       }
@@ -58,8 +59,8 @@ export function navigation({
     nextPage(event?: UIEvent) {
       const last = nav.current;
       if (last < max - 1) {
-        nav.current++;
         if (stopPropagation && event) event.stopPropagation();
+        nav.current++;
         if (listeners.next) listeners.next(nav.current, last, nav);
         if (listeners.page) listeners.page(nav.current, last, nav);
       }
@@ -82,8 +83,9 @@ export function navigation({
         .on('pointerup', nav.events.onClick)
         .on('keydown', nav.events.onKeyDown)
         .on('contextmenu', preventDefault) // avoid opening context menu on right click
-        .on('mouseenter', focus)
-        .on('mouseleave', blur);
+        .on('mouseenter', focus);
+      // .on('mouseleave', blur);
+      $div.focus();
       return nav;
     },
     on(type: 'previous' | 'next' | 'page', listener?: NavigationCallback) {

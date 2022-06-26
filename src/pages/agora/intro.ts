@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { attrs } from '../../d3-utils';
 import md, { mdi } from '../../md';
 import { navigation } from '../../navigation';
+import { PageData } from '../../pages';
 import tex from '../../tex';
 import graphstate0 from './intro/graphstate0.json';
 import graphstate1 from './intro/graphstate1.json';
@@ -33,15 +34,11 @@ const introStates = (() => {
     {
       graph: combined,
       point: true,
-      caption: md`
-—
-      `,
+      caption: md`${'—'}`,
     },
     {
       graph: combined,
-      caption: md`
-—
-      `,
+      caption: md`${'—'}`,
     },
     {
       graph: { nodes: nodesVPSC, edges: combined.edges },
@@ -204,10 +201,9 @@ function graphIntro(
 }
 
 export default {
-  title: mdi`test`,
-  content: (_page: number, $holder: HTMLDivElement) => {
-    $holder.classList.add('flex');
-    $holder.classList.add('flex-column');
+  title: `Introduction`,
+  content: (_opts: PageData, $holder: HTMLDivElement) => {
+    $holder.classList.add('flex', 'flex-column');
     $holder.style.height = $holder.getBoundingClientRect().height + 'px';
     $holder.append(html.fragment`
       <svg
@@ -221,5 +217,4 @@ export default {
       .bind($holder)
       .first();
   },
-  footer: (page: number) => mdi`${page}`,
 };

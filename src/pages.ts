@@ -1,13 +1,20 @@
 import * as d3 from 'd3';
 import { html } from 'htl';
+import { navigation } from './navigation';
 
+export type PageData = { page: number; nav: ReturnType<typeof navigation> };
+
+type PageProp =
+  | string
+  | Element
+  | ((data: PageData, $holder: HTMLDivElement) => string | Element | void)
+  | undefined;
 export type PageObject = {
   template?: 'title' | 'full';
-  [key: string]:
-    | string
-    | Element
-    | ((data: any, $holder: HTMLDivElement) => string | Element | void)
-    | undefined;
+  content?: PageProp;
+  footer?: PageProp;
+  background?: PageProp;
+  [key: string]: PageProp;
 };
 
 type PageElement = HTMLElement & {
@@ -17,6 +24,34 @@ type PageElement = HTMLElement & {
   render: () => void;
 };
 
+export const defaultFooter = ({ page, nav }: PageData) => {
+  const $number = html`<span>${page}</span>` as HTMLInputElement;
+  const $range = html`<input
+    type="range"
+    value=${page}
+    step="1"
+    min="1"
+    max=${nav.max}
+  />` as HTMLInputElement;
+
+  const $form = html`<form style="font-size: .75em">
+    ${$range} ${$number}/${nav.max}
+  </form>`;
+  $form.addEventListener('pointerup', (e) => e.stopPropagation());
+  $form.addEventListener('change', (e) => {
+    e.stopPropagation();
+    nav.page($range.valueAsNumber - 1);
+    $range.valueAsNumber = page;
+    $number.innerHTML = '' + page;
+  });
+
+  $range.addEventListener('input', () => {
+    $number.innerHTML = $range.value;
+  });
+
+  return $form;
+};
+
 function SimplePage<T>(
   { template = 'full', ...props }: PageObject,
   data: T
@@ -24,11 +59,22 @@ function SimplePage<T>(
   const $title = html`<h2 class="measure noto">
     ${create(props.title, data)}
   </h2>`;
-  const $content = html`<div></div>`;
-  const $footer = html`<div class="pt5">${create(props.footer, data)}</div>`;
 
-  const $page = html`<div class="slides h-100 w-100 flex roboto" />
-    <div class="w-100 flex flex-column">${$title} ${$content} ${$footer}</div>`;
+  const $content = html`<div></div>`;
+  const $footer = html`<div class="pt4">
+    ${create(
+      template === 'title' ? props.footer : props.footer ?? defaultFooter,
+      data
+    )}
+  </div>`;
+
+  const $background = html`<div
+    class="absolute"
+    style="inset:0;z-index:-1"
+  ></div>`;
+  const $page = html`<div class="slides h-100 w-100 flex roboto relative" />
+    ${$background}
+    <div class="w-100 flex flex-column">${$title}${$content}${$footer}</div> `;
 
   $page.classList.toggle('items-center', template === 'title');
   $content.classList.toggle('flex-grow-1', template === 'full');
@@ -39,7 +85,9 @@ function SimplePage<T>(
     $footer,
     render() {
       const $el = create(props.content, data, $content);
+      const $bg = create(props.background, data, $background);
       if ($el) $content.append($el);
+      if ($bg) $background.append($bg);
       $RenderSimplePage.render = () => {};
     },
   });

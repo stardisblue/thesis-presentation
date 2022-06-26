@@ -10,17 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@observablehq/inputs": "^0.10.4",
+    "@observablehq/runtime": "4",
     "@types/d3": "^7.1.0",
     "@types/katex": "^0.11.1",
+    "@types/leaflet": "^1.7.11",
     "@types/lodash": "^4.14.179",
     "@types/marked": "^4.0.2",
+    "add": "^2.0.6",
+    "b24f23c58f6e07b8": "https://api.observablehq.com/d/b24f23c58f6e07b8.tgz?v=3",
     "d3": "^7.3.0",
+    "fast-kde": "^0.2.1",
+    "fsac": "stardisblue/fsac",
     "highlight.js": "^11.4.0",
     "htl": "^0.3.1",
     "katex": "^0.15.2",
+    "leaflet": "^1.8.0",
     "lodash": "^4.17.21",
     "marked": "^4.0.12",
-    "tachyons": "^4.12.0"
+    "tachyons": "^4.12.0",
+    "yarn": "^1.22.19"
   },
   "browserslist": [
     "defaults"

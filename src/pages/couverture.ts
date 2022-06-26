@@ -20,7 +20,7 @@ const page: PageObject = {
 Directeur de thèse : **Pascal PONCELET**<br/>
 Co-encadrant de thèse : **Arnaud SALLABERRY**
 
-Le *Date De Soutenance*
+*29 Juin 2022*
 
 <table class="w-100" style="font-size:0.8em">
 ${formatJury.map((a) => `<tr><td>${a.join('</td><td>')}</td>`)}

@@ -13,9 +13,9 @@ import pages from './pages/index';
 
     navigation({ max: pages.length })
       .on('page', (page, _prev, nav) => {
-        $page.load(pages[page], page + 1);
+        $page.load(pages[page], { page: page + 1, nav });
         nav.collect(2).map((v, i) => {
-          $page.preload(i + 1, pages[v], v + 1);
+          $page.preload(i + 1, pages[v], { page: v + 1, nav });
         });
       })
       .bind($page)

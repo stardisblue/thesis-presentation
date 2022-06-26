@@ -1,46 +1,17 @@
-import tex from '../tex';
-import md, { mdi } from '../md';
-import type { PageObject } from '../pages';
-import intro from './agora/intro';
+import type { PageData, PageObject } from '../pages';
+
 import couverture from './couverture';
+import intro from './intro';
+import prosovis from './prosovis';
+import agora from './agora';
+import fsac from './fsac';
 
-const pages: (PageObject | ((page: number) => any))[] = [
+const pages: (PageObject | ((options: PageData) => any))[] = [
   couverture,
-  (page) => ({
-    title: `AGORA`,
-    content: md`
-<div>hello world</div>
-
-${tex.block`\frac{1}{hello \cup test}`}
-
-~~~js
-const i = j;
-i++;
-function sum(a, b) {
-return a + b;
-}
-~~~
-      `,
-    footer: md`${page}`,
-  }),
-  intro,
-  (page) => ({
-    title: `AGORA`,
-    content: md`
-<div>hello world</div>
-
-${tex.block`\frac{1}{hello \cup test}`}
-
-~~~javascript
-const i = j;
-i++;
-function sum(a, b) {
-return a + b;
-}
-~~~
-      `,
-    footer: mdi`${page}`,
-  }),
+  ...intro,
+  ...prosovis,
+  ...agora,
+  ...fsac,
 ];
 
 export default pages;
