@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import { html } from 'htl';
 import _ from 'lodash';
 import { attrs } from '../../d3-utils';
-import md, { mdi } from '../../md';
+import md from '../../md';
 import { navigation } from '../../navigation';
 import { PageData } from '../../pages';
 import tex from '../../tex';
