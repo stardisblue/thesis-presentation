@@ -18,6 +18,8 @@
     "@types/lodash": "^4.14.179",
     "@types/marked": "^4.0.2",
     "@types/rbush": "^3.0.0",
+    "agora-criteria": "agorajs/agora-criteria",
+    "agora-graph": "agorajs/agora-graph",
     "add": "^2.0.6",
     "b24f23c58f6e07b8": "https://api.observablehq.com/d/b24f23c58f6e07b8.tgz?v=3",
     "d3": "^7.3.0",

@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { html } from 'htl';
 import _ from 'lodash';
+import { bib, cite } from '../../bib';
 import { attrs } from '../../d3-utils';
 import md from '../../md';
 import { navigation } from '../../navigation';
@@ -42,7 +43,9 @@ const introStates = (() => {
     },
     {
       graph: { nodes: nodesVPSC, edges: combined.edges },
-      caption: md`<p>${tex`\mathcal{E}'_G(v)`} Résultat souhaité (généré avec VPSC)`,
+      caption: md`<p>${tex`\mathcal{E}'_G(v)`} Résultat souhaité (généré avec VPSC ${cite(
+        bib.Dwyer2005
+      )})`,
     },
   ];
 })();

@@ -35,8 +35,8 @@ function ooDrag(_lines: any, $tex: any) {
     });
 }
 
-function chartOO() {
-  const $svg = svg`<svg id="chartOO" width=100% height=100% viewbox="0, 0, 400, 150">`;
+export function chartOO() {
+  const $svg = svg`<svg id="chartOO" viewbox="0, 0, 400, 150">`;
 
   const $tex = html`<span>${tex`\text{nni} = 0`}</span>`;
 
@@ -114,15 +114,26 @@ function chartOO() {
       } as any) as any
     );
 
-  return html`<div>${$svg}${$tex}</div>`;
+  return [$svg, $tex];
 }
 
 export default {
   title: `Orthogonal Ordering`,
   content: (_opts: PageData, $holder: HTMLDivElement) => {
+    $holder.classList.add('flex', 'flex-column');
+    const $ref = html`<div class="flex-grow-1"></div>`;
+
+    const [$svg, $div] = chartOO();
+    $svg.addEventListener('pointerup', (e) => e.stopPropagation());
+
     $holder.append(
-      html`<h4>Préserver l'ordre des noeuds sur ${tex`x`} et ${tex`y`}</h4>
-        ${chartOO()}`
+      html`<h4>Préserver l'ordre des noeuds sur ${tex`x`} et ${tex`y`}</h4>`,
+      $ref,
+      $div
     );
+
+    const { height } = $ref.getBoundingClientRect();
+    $svg.style.height = '' + height;
+    $holder.replaceChild($svg, $ref);
   },
 };
