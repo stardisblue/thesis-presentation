@@ -1,5 +1,4 @@
 import { html } from 'htl';
-import md from '../../md';
 import { PageObject } from '../../pages';
 import imgUrl from './proso/relations.png';
 
@@ -56,23 +55,20 @@ export const prosopographie: PageObject = {
       createTable('Fati Chen', data, { x: '4em', y: '5em' }),
     ];
 
-    return md`
-L'étude de la vie d'individus et de leurs communautés
+    return html.fragment`<p class="mt0">
+        L'étude de la vie d'individus et de leurs communautés
+      </p>
 
----
-  
-<div class="flex">
-    <div class="w-70">
-        <h3>Biographies</h3>
-        <div class="relative">
-        ${$biographies}
+      <hr />
+      <div class="flex">
+        <div class="w-70">
+          <h3>Biographies</h3>
+          <div class="relative">${$biographies}</div>
         </div>
-    </div>
-    <div class="w-30">
-        <h3>Relations</h3>
-        <div><img src=${imgUrl} /></div>
-    </div>
-</div>
-    `;
+        <div class="w-30">
+          <h3>Relations</h3>
+          <div><img src=${imgUrl} /></div>
+        </div>
+      </div>`;
   },
 };
