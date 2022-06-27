@@ -1,4 +1,4 @@
-import { hierarchy, max, scaleLinear, select } from 'd3';
+import { hierarchy, scaleLinear, select } from 'd3';
 import { fsac } from 'fsac';
 import { html, svg } from 'htl';
 import { navigation } from '../../navigation';
