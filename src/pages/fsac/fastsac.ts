@@ -4,6 +4,7 @@ import { html, svg } from 'htl';
 import { navigation } from '../../navigation';
 import { PageObject } from '../../pages';
 import tex from '../../tex';
+// import imgUrl from './dataset/algo.png';
 
 const data = [
   Cluster(2.3, 3.2, 1, null, { id: 'a', at: 0, h: 0 }),
@@ -15,16 +16,32 @@ const data = [
 
 const comments = [
   () =>
-    html.fragment`<p>Diminuer la quantité de détection de chevauchements</p>`,
+    html`<p>Méthode heuristique</p>
+      <p>
+        Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
+      </p>`,
   () =>
-    html.fragment`<p>Diminuer la quantité de détection de chevauchements</p>`,
-  () => html.fragment`<p>Diminuer la quantité de détection de chevauchements</p>
+    html`<p>Méthode heuristique</p>
+      <p>
+        Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
+      </p>`,
+  () => html`<p>Méthode heuristique</p>
+    <p>Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements</p>
     <p>${tex`a_2`} n'as plus de chevauchements</p>`,
-  () => html.fragment`<p>Diminuer la quantité de détection de chevauchements</p>
+  () => html`<p>Méthode heuristique</p>
+
+    <p>Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements</p>
     <p>${tex`d_1`} chevauche avec ${tex`a_2`}</p>`,
-  () =>
-    html.fragment`<p>Diminuer la quantité de détection de chevauchements</p>`,
+  () => html`<p>Méthode heuristique</p>
+    <p>
+      Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
+    </p>`,
 ];
+
+// export const fastsac: PageObject = {
+//   title: 'Fast SAC',
+//   content: html`<img src=${imgUrl} />`,
+// };
 
 export const fastsac: PageObject = {
   title: 'Fast SAC',
@@ -70,8 +87,8 @@ function createSvg(width: number, x: any, show: any[]): string | Node {
                   cx=${x(c.x)}
                   cy=${x(c.y)}
                   r=${x(c.r)}
-                  stroke="black"
-                  stroke-width="1"
+                  stroke="${c.data.color ?? 'black'}"
+                  stroke-width="2"
                   fill="none"
                 ></circle>`
             )}
@@ -79,7 +96,9 @@ function createSvg(width: number, x: any, show: any[]): string | Node {
           ${show.map(
             (c) => html`<div
               class="absolute"
-              style="left:calc(${x(c.x)}px - .2em);top:calc(${x(c.y)}px - .7em)"
+              style="left:calc(${x(c.x)}px - .2em);top:calc(${x(
+                c.y
+              )}px - .7em);color:${c.data.color ?? 'currentColor'}"
             >
               ${tex`${c.data.id}${c.data.h ? '_' + c.data.h : ''}`}
             </div>`
