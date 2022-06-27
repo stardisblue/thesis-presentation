@@ -386,8 +386,14 @@ function spreadGraph(
     .selectAll('div.nts')
     .data([
       [
-        [state.bad, html`<span class="caption">PFS' Hayashi1998</span>`],
-        [state.good, html`<span class="caption">VPSC Dwyer2005</span>`],
+        [
+          state.bad,
+          html`<span class="caption">PFS' ${cite(bib.Hayashi1998)}</span>`,
+        ],
+        [
+          state.good,
+          html`<span class="caption">VPSC ${cite(bib.Dwyer2005)}</span>`,
+        ],
       ],
     ])
     .join(

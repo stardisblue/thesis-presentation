@@ -4,6 +4,7 @@ import { fastsac } from './fastsac';
 import intro from './intro';
 import overlap from './overlap';
 import { question } from './question';
+import { reponse } from './reponse';
 import { rtree } from './rtree';
 import { title } from './title';
 
@@ -12,6 +13,7 @@ export default [
   ...intro,
   ...overlap,
   question,
+  reponse,
   fastsac,
   rtree,
   ...experiments,

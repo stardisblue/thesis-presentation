@@ -31,6 +31,26 @@ export const bib = {
   Hu2005: { label: 'Hu2005' },
   Hachul2004: { label: 'Hachul2004', url: doi('10.1007/978-3-540-31843-9_29') },
   Heer2021: { label: 'Heer2021', url: doi('10.1109/VIS49827.2021.9623323') },
+  Manolopoulos2006: {
+    label: 'Manolopoulos2006',
+    url: doi('10.1007/978-1-84628-293-5'),
+  },
+  Scheepens2014: {
+    label: 'Scheepens2014',
+    url: doi('10.1109/PacificVis.2014.13'),
+  },
+  Castermans2019: {
+    label: 'Castermans2019',
+    url: doi('10.1137/1.9781611975499.14'),
+  },
+  Cook1986: {
+    label: 'Cook1986',
+    url: doi('10.1145/7529.8927'),
+  },
+  Perlin1985: {
+    label: 'Perlin1985',
+    url: doi('10.1145/325334.325247'),
+  },
 };
 
 export function cite(cite: string | Biblio) {

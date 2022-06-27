@@ -1,5 +1,6 @@
 import { scaleLinear } from 'd3';
 import { html, svg } from 'htl';
+import md from '../../md';
 import { PageObject } from '../../pages';
 import tex from '../../tex';
 
@@ -16,8 +17,8 @@ const centers = { x1: c0.x, y1: c0.y, x2: c1.x, y2: c1.y };
 export const overlap: PageObject = {
   title: 'Résoudre les chevauchements',
   content: (_o, $container) => {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -36,8 +37,8 @@ export const overlap: PageObject = {
 export const radius: PageObject = {
   title: 'Résoudre les chevauchements',
   content: (_o, $container) => {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -76,8 +77,8 @@ export const radius: PageObject = {
 export const naming: PageObject = {
   title: 'Résoudre les chevauchements',
   content: function (_o, $container) {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -111,8 +112,8 @@ export const naming: PageObject = {
 export const green: PageObject = {
   title: 'Détection du chevauchement',
   content: function (_o, $container) {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -161,8 +162,8 @@ const fused = (function () {
 export const newcircle: PageObject = {
   title: 'Agglomération des cercles',
   content: function (_o, $container) {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -210,8 +211,8 @@ export const newcircle: PageObject = {
 export const again: PageObject = {
   title: 'Nouveau chevauchement occasionné',
   content: function (_o, $container) {
-    const $svgcontainer = html`<div class="relative w-70"></div>`;
-    const $div = html`<div class="w-30"></div>`;
+    const $svgcontainer = html`<div class="relative w-60"></div>`;
+    const $div = html`<div class="w-40"></div>`;
 
     $container.append(html`<div class="flex">${$svgcontainer}${$div}</div>`);
     const { width } = $svgcontainer.getBoundingClientRect();
@@ -260,9 +261,9 @@ export const again: PageObject = {
     );
 
     $div.append(
-      html`<p>Processus itératif ${tex`O(n)`}</p>`,
-      html`<p>Détecter les chevauchements ${tex`O(n^2)`}</p>`,
-      tex.block`O(n \times n^2)`
+      md`Processus itératif ${tex`O(n)`}`,
+      md`Détecter les chevauchements ${tex`O(n^2)`}`,
+      md`Complexité globale : ${tex`O(n \times n^2)`}`
     );
   },
 };

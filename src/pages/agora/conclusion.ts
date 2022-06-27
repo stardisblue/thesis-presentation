@@ -9,7 +9,7 @@ const url = (title: string, url: string) =>
   });
 
 export default {
-  title: 'AGORA — pour résumer',
+  title: 'AGORA — Conclusion',
   content: () =>
     html.fragment`<table class="collapse mv3">
         <tr class="bb bt">
@@ -28,13 +28,12 @@ export default {
           <td class="pa3">PFS'</td>
         </tr>
       </table>
- 
+
       <h3>Node Overlap Removal Algorithms: an Extended Study</h3>
+      <p>
+        <b>Fati CHEN</b>, Laurent Piccinini, Pascal Poncelet & Arnaud Sallaberry
+      </p>
       <blockquote>
-        <p>
-          <b>Fati CHEN</b>, Laurent Piccinini, Pascal Poncelet & Arnaud
-          Sallaberry
-        </p>
         <p>
           <i>Graph Drawing 2019 (GD2019)</i>
           ${doi('10.1007/978-3-030-35802-0_14')}
@@ -44,7 +43,6 @@ export default {
           ${doi('10.7155/jgaa.00532')}
         </p>
       </blockquote>
- 
 
       <p class="tr">
         Disponible sur <b>AGORAjs</b>

@@ -2,10 +2,10 @@ import md from '../../md';
 import type { PageObject } from '../../pages';
 
 export const features: PageObject = {
-  title: 'Prosovis – Fonctionnalités',
+  title: 'ProsoVis – Fonctionnalités',
   content: md`
 1. Visualiser la temporalité, la spatialité et les individus
-2. Filtrer sur:
+2. Filtrer sur :
 
    - les dimensions des données
    - les propriétés des évènements

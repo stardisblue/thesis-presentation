@@ -405,9 +405,12 @@ function gsChart(
       [
         [
           state.bad,
-          html`<span class="caption">GTREE ${'Nachmanson2016'}</span>`,
+          html`<span class="caption">GTREE ${cite(bib.Hayashi1998)}</span>`,
         ],
-        [state.good, html`<span class="caption">VPSC ${'Dwyer2005'}</span>`],
+        [
+          state.good,
+          html`<span class="caption">VPSC ${cite(bib.Dwyer2005)}</span>`,
+        ],
       ],
     ])
     .join(

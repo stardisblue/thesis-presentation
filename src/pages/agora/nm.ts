@@ -1,6 +1,7 @@
 import { NodeMovement } from 'agora-criteria';
 import * as d3 from 'd3';
 import { html, svg } from 'htl';
+import { bib, cite } from '../../bib';
 import { build, attrs } from '../../d3-utils';
 import { navigation } from '../../navigation';
 import { PageData } from '../../pages';
@@ -55,39 +56,6 @@ function generateArrow(
 
 const nm_dm_imse =
   NodeMovement.DistanceMoved.ImprovedMeanSquaredEuclidean.criteria;
-
-const nmStates = [
-  {
-    nodes: [
-      { label: 'A', ox: 55, oy: 110 },
-      { label: 'B', ox: 102, oy: 107 },
-      { label: 'C', ox: 87, oy: 74 },
-      { label: 'D', ox: 130, oy: 88 },
-      { label: 'E', ox: 300, oy: 20 },
-    ],
-    caption: html`Initial ${tex`\mathcal{E}`}`,
-  },
-  {
-    nodes: [
-      { label: 'A', ox: 21.83100439971076, oy: 122.56899510486951 },
-      { label: 'B', ox: 85.89153247215957, oy: 120.9199285514563 },
-      { label: 'C', ox: 84.18211368254869, oy: 63.841778151559375 },
-      { label: 'D', ox: 149.94017298158278, oy: 80.61963603432272 },
-      { label: 'E', ox: 300, oy: 20 },
-    ],
-    caption: html`Utilisation de PRISM ${'Gansner2010'}`,
-  },
-  {
-    nodes: [
-      { label: 'A', ox: 48.5, oy: 112 },
-      { label: 'B', ox: 108.5, oy: 117.5 },
-      { label: 'C', ox: 78.5, oy: 72 },
-      { label: 'D', ox: 138.500001, oy: 77.5 },
-      { label: 'E', ox: 300, oy: 20 },
-    ],
-    caption: html`VPSC ${'Dwyer2005'} semble être une meilleure alternative.`,
-  },
-];
 
 function nmDrag(simulation: any) {
   return d3
@@ -231,6 +199,40 @@ function nmSimulation(data: any) {
 
   return { data, simulation };
 }
+
+const nmStates = [
+  {
+    nodes: [
+      { label: 'A', ox: 55, oy: 110 },
+      { label: 'B', ox: 102, oy: 107 },
+      { label: 'C', ox: 87, oy: 74 },
+      { label: 'D', ox: 130, oy: 88 },
+      { label: 'E', ox: 300, oy: 20 },
+    ],
+    caption: html`Initial ${tex`\mathcal{E}`}`,
+  },
+  {
+    nodes: [
+      { label: 'A', ox: 21.83100439971076, oy: 122.56899510486951 },
+      { label: 'B', ox: 85.89153247215957, oy: 120.9199285514563 },
+      { label: 'C', ox: 84.18211368254869, oy: 63.841778151559375 },
+      { label: 'D', ox: 149.94017298158278, oy: 80.61963603432272 },
+      { label: 'E', ox: 300, oy: 20 },
+    ],
+    caption: html`Utilisation de PRISM ${cite(bib.Gansner2010)}`,
+  },
+  {
+    nodes: [
+      { label: 'A', ox: 48.5, oy: 112 },
+      { label: 'B', ox: 108.5, oy: 117.5 },
+      { label: 'C', ox: 78.5, oy: 72 },
+      { label: 'D', ox: 138.500001, oy: 77.5 },
+      { label: 'E', ox: 300, oy: 20 },
+    ],
+    caption: html`VPSC ${cite(bib.Dwyer2005)} semble être une meilleure
+    alternative.`,
+  },
+];
 
 export default {
   title: 'Node Movement Minimisation',

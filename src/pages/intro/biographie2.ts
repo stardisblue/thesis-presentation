@@ -1,5 +1,5 @@
 import { html } from 'htl';
-import md from '../../md';
+import md, { mdi } from '../../md';
 import { PageObject } from '../../pages';
 
 const data = [
@@ -27,7 +27,7 @@ const table = html`<table style="border-collapse: collapse">
 export const biographie2: PageObject = {
   title: 'Biographie – Des données complexes',
   content: md`
-**Fati Chen** est **né** à **Changji** le **16 novembre 1994**.
+<p class="mt0">${mdi`**Fati Chen** est **né** à **Changji** le **16 novembre 1994**.`}</p>
 
 **Il** a **étudié** à l'université de **Montpellier** où il a **obtenu** son Master en **2018**
 

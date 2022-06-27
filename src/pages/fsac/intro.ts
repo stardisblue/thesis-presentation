@@ -11,6 +11,7 @@ import { franceMap } from './intro/franceMap';
 import { heatmapGradient } from './intro/heatmapGradient';
 import { fsac } from 'fsac';
 import { mergeFactory } from './intro/fsac';
+import { bib, cite } from '../../bib';
 
 const points = data.map((v) => ({
   id: v.id,
@@ -42,7 +43,7 @@ export const fulldata: PageObject = {
   title: `Exemple d’encombrement`,
   content: html` <p>Tous les lieux du jeux de données Siprojuris</p>
     <p>Données masquées</p>
-    <p>Differences de densité difficile à distinguer</p>`,
+    <p>Différences de densité difficile à distinguer</p>`,
   background: (_o: PageData, $background: HTMLDivElement) => {
     const markers = _.uniqBy(points, 'loc_id');
 
@@ -57,8 +58,8 @@ export const heatmapdata = () => {
     content: html`<p>Densité des évènements de Siprojuris</p>
       <p>Couleur pour représenter la densité</p>
       <p>Densités faibles difficilement visibles</p>
-      <p>Points individuelles non visibles</p>
-      <p>Fast KDE (Heer et al. 2021)</p>`,
+      <p>Points individuels non visibles</p>
+      <p>Fast-KDE ${cite(bib.Heer2021)}</p>`,
     background: (_o: PageData, $background: HTMLDivElement) => {
       const map = franceMap($background);
 

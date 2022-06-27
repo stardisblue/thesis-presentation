@@ -15,27 +15,20 @@ const data = [
 ];
 
 const comments = [
+  () => html`<p><strong>Résolution du cluster ${tex`a`}</strong></p>
+    <p>Chevauchements de ${tex`a = \{b, c\}`}</p>`,
   () =>
-    html`<p>Méthode heuristique</p>
-      <p>
-        Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
-      </p>`,
+    html` <p><strong>Résolution du cluster ${tex`a`}</strong></p>
+      <p>${tex`a`} devient ${tex`a_2`} et n'a plus de chevauchements</p>`,
   () =>
-    html`<p>Méthode heuristique</p>
-      <p>
-        Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
-      </p>`,
-  () => html`<p>Méthode heuristique</p>
-    <p>Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements</p>
-    <p>${tex`a_2`} n'as plus de chevauchements</p>`,
-  () => html`<p>Méthode heuristique</p>
-
-    <p>Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements</p>
-    <p>${tex`d_1`} chevauche avec ${tex`a_2`}</p>`,
-  () => html`<p>Méthode heuristique</p>
-    <p>
-      Un cluster est fusionné jusqu'à ce qu'il n'ait plus de chevauchements
-    </p>`,
+    html`<p><strong>Résolution du cluster ${tex`d`}</strong></p>
+      <p>Chevauchements de ${tex`d = \{e\}`}</p>`,
+  () => html`<p><strong>Résolution du cluster ${tex`d`}</strong></p>
+    <p>${tex`d`} devient ${tex`d_1`} en fusionnant avec ${tex`e`}</p>
+    <p>${tex`d_1`} chevauche à présent avec ${tex`a_2`}</p>`,
+  () => html`<p><strong>Résolution du cluster ${tex`d`}</strong></p>
+    <p>${tex`d_1`} devient ${tex`d_2`} et n'a plus de chevauchements</p>`,
+  () => html` <p>Complexité : ${tex`O(n^2)`}</p>`,
 ];
 
 // export const fastsac: PageObject = {
@@ -43,8 +36,10 @@ const comments = [
 //   content: html`<img src=${imgUrl} />`,
 // };
 
+const pages = [0, 2, 2, 3, 4, 4];
+
 export const fastsac: PageObject = {
-  title: 'Fast SAC',
+  title: 'Méthode heuristique',
   content: (_o, $container) => {
     $container.classList.add('flex');
 
@@ -56,13 +51,12 @@ export const fastsac: PageObject = {
     const { width } = $svgdiv.getBoundingClientRect();
 
     const result = fsac(data, { merge: circleMerge() });
-    const maxStep = max(result, (d) => d.data.at);
 
-    navigation({ max: maxStep + 1, stopPropagation: true })
+    navigation({ max: pages.length, stopPropagation: true })
       .on('page', (page) => {
         const show = getAtStep(
           result,
-          ({ data: d }: { data: any }) => d.data.at <= page
+          ({ data: d }: { data: any }) => d.data.at <= pages[page]
         );
 
         const x = scaleLinear().domain([0, 8]).range([0, width]);

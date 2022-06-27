@@ -34,7 +34,7 @@ export const result = {
 
 const resultSyntId = 'O-1';
 
-function makeTable(resultatsSynth: any[], caption: any = '') {
+function makeTable(resultatsSynth: any[], caption: any = '', axis = '') {
   return html.fragment`<table width="100%">
       <colgroup>
         <col span="1" style="width: 10%;" />
@@ -50,7 +50,7 @@ function makeTable(resultatsSynth: any[], caption: any = '') {
       </colgroup>
       <thead>
         <tr class="${resultSyntId}-headline">
-          <th></th>
+          <th>${axis}</th>
           <th class="${resultSyntId}-title">Scaling</th>
           <th class="${resultSyntId}-title">PFS</th>
           <th class="${resultSyntId}-title">FTA</th>
@@ -146,7 +146,7 @@ export const synth = {
   content: () =>
     makeTable(
       resultatsSynth,
-      'Valeurs aggrégées des métriques selectionnées pour les graphes synthétiques.'
+      'Valeurs aggrégées des métriques sélectionnées pour les graphes synthétiques.'
     ),
 };
 
@@ -169,7 +169,7 @@ export const synthOO: PageObject = {
     $holder.append(
       makeTable(
         resultatsSynthOO,
-        html`L'ensemble des graphes obtiennent de bons résultats (<4%) sur ce
+        html`L'ensemble des graphes obtient de bons résultats (<4%) sur ce
           critère. <em>Scaling</em>, <em>PFS</em> et <em>PFS'</em> sont parfaits
           (0%).`
       )
@@ -199,7 +199,7 @@ export const synth2 = {
   content: () =>
     makeTable(
       resultatsSynth2,
-      'Valeurs aggrégées des métriques selectionnées pour les graphes synthétiques.'
+      'Valeurs aggrégées des métriques sélectionnées pour les graphes synthétiques.'
     ),
 };
 
@@ -254,7 +254,7 @@ export const synth12 = {
           'translate(0,0)scale(1)',
           resultatsSynth12Id
         )}</svg></div>
-    <div style="position: absolute;width: 10em;top: 1em;left: 70%">
+    <div style="position: absolute;width: 10em;top: 1em;left: 45%">
       <p style="margin-bottom:0"><em>Scale</em></p>
       <svg width=100% height=100% viewbox="-10,-10,900,900">
         <style>#ref-${resultatsSynth12Id} .edges{stroke-width:4px;}</style>
@@ -263,7 +263,7 @@ export const synth12 = {
           'translate(0,0)scale(1)',
           resultatsSynth12Id
         )}</svg></div>
-    <div style="position: absolute;width: 10em;top: 1em;left: 45%">
+    <div style="position: absolute;width: 10em;top: 1em;left: 70%">
       <p style="margin-bottom:0"><em>PFS</em></p>
       <svg width=100% height=100% viewbox="-10,-10,800,400">
         <style>#ref-${resultatsSynth12Id} .edges{stroke-width:4px;}</style>
@@ -327,7 +327,7 @@ export const synth34 = {
         )}
       </svg>
     </div>
-    <div class="absolute" style="width:4.4em;top: 1em;left:65%">
+    <div class="absolute" style="width:4.4em;top: 1em;left:82%">
       <p style="margin-bottom:0"><em>VPSC</em></p>
       <svg width="100%" height="100%" viewbox="-10,-10,180,310">
         <style>
@@ -342,7 +342,7 @@ export const synth34 = {
         )}
       </svg>
     </div>
-    <div class="absolute" style="width:9.2em;top:1em;left:77%">
+    <div class="absolute" style="width:9.2em;top:1em;left:62%">
       <p style="margin-bottom:0"><em>FTA</em></p>
       <svg width="100%" height="100%" viewbox="-10,-10,350,210">
         <style>
@@ -478,10 +478,11 @@ export const times = {
     html`<div class="relative">
       ${makeTable(
         resultatsTimes,
-        'Valeurs aggrégées des temps pour les graphes synthétiques.'
+        'Valeurs aggrégées des temps pour les graphes synthétiques.',
+        'Noeuds'
       )}
       <p style="position:absolute; top:33%; left:45%">${tex`>400ms`}</p>
     </div>`,
 };
 
-export default [synth, synthOO, synth2, synth12, synth34, synth5];
+export default [synth, synthOO, synth2, synth12, synth34, synth5, times];

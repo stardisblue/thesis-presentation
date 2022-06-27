@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { html, svg } from 'htl';
-import md from '../../md';
+import md, { mdi } from '../../md';
 import { navigation } from '../../navigation';
 import { PageObject } from '../../pages';
 import map from './bio/map';
@@ -35,15 +35,16 @@ const dimensions = [
 export const biographie: PageObject = {
   title: 'Biographie',
   content: (_o: any, $holder: HTMLDivElement) => {
-    const bio = md`
-**Fati Chen** est **né** à **Changji** le **16 novembre 1994**.
+    $holder.classList.add('flex', 'flex-column');
+    $holder.append(
+      md`
+<p class="mt0">${mdi`**Fati Chen** est **né** à **Changji** le **16 novembre 1994**.`}</p>
 
 **Il** a **étudié** à l'université de **Montpellier** où il a **obtenu** son Master en **2018**
 
 ---
-    `;
-    $holder.classList.add('flex', 'flex-column');
-    $holder.append(bio);
+      `
+    );
 
     const $mapdiv = html`<div class="flex-grow-1"></div>`;
 

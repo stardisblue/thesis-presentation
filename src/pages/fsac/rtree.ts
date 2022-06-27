@@ -5,13 +5,14 @@ import notebook from 'b24f23c58f6e07b8';
 import tex from '../../tex';
 import { select } from 'd3';
 import { navigation } from '../../navigation';
+import { bib, cite } from '../../bib';
 
 const comments = [
-  () => html`<p>Algorithmes d'indexation spatiale</p>
+  () => html`<p>Algorithme d'indexation spatiale</p>
     <p>Recherche d'objets dans l'espace</p>`,
-  () => html`<p>Algorithmes d'indexation spatiale</p>
+  () => html`<p>Algorithme d'indexation spatiale</p>
     <p>Recherche d'objets dans l'espace</p>
-    <p>Coût de la détection: ${tex`O(n) \Rightarrow O(\log n)`}</p> `,
+    <p>FSAC : ${tex`O(n \log n)`}</p>`,
 ];
 
 export const rtree: PageObject = {
@@ -29,11 +30,11 @@ export const rtree: PageObject = {
         style="font-size:0.5em"
       ></div>
       <div id="observablehq-rtreeview-14fea8e0"></div>
-      <p>R-Arbre (Manolopoulos et al., 2006)</p>
+      <p class="mv0" style="font-size: 0.8em">
+        R-Arbre ${cite(bib.Manolopoulos2006)}
+      </p>
     </div>`;
-    const $comments = html`<div class="w-100">
-      <p>Coût de la détection: ${tex`O(n) \Rightarrow O(\log n)</p>`}</p>
-    </div>`;
+    const $comments = html`<div class="w-100"></div>`;
 
     $svgdiv.addEventListener('pointerup', (e) => e.stopPropagation());
 

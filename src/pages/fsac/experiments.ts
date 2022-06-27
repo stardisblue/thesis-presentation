@@ -8,16 +8,20 @@ import { html } from 'htl';
 import glottolog from './dataset/glottolog.json';
 import L from 'leaflet';
 import tex from '../../tex';
+import { bib, cite } from '../../bib';
+// import realUrl from './dataset/qualitative.png';
 export const experiments: PageObject = {
   title: 'Dispositif Experimental',
   content: md`
 **4 Algorithmes**
 
-> O-SAC – F-SAC – QUAD – QUAD+BIG
+> O-SAC ${cite(bib.Scheepens2014)} – **FSAC** – QUAD ${cite(
+    bib.Castermans2019
+  )} – QUAD+BIG ${cite(bib.Castermans2019)}
 
 **4000 jeux de données synthétiques**
 
-> Uniforme – Normale – Disques de poisson – Bruit de Perlin
+> Uniforme – Normale – Disques de poisson  – Bruit de Perlin
 >
 > 50 – 100 – 200 – 400 – 800 – 1600 – 3200 – 6400 – 12800 – 25600 points
 >
@@ -28,10 +32,16 @@ export const experiments: PageObject = {
 };
 
 const datasets = [
-  { label: 'Uniforme', url: uniformUrl },
-  { label: 'Normale', url: normalUrl },
-  { label: 'Disques de Poisson', url: poissonUrl },
-  { label: 'Bruit de Perlin', url: perlinUrl },
+  { label: () => 'Uniforme', url: uniformUrl },
+  { label: () => 'Normale', url: normalUrl },
+  {
+    label: () => html.fragment`Disques de Poisson ${cite(bib.Cook1986)}`,
+    url: poissonUrl,
+  },
+  {
+    label: () => html.fragment`Bruit de Perlin ${cite(bib.Perlin1985)}`,
+    url: perlinUrl,
+  },
 ];
 
 export const sdataset: PageObject = {
@@ -42,7 +52,7 @@ export const sdataset: PageObject = {
       ...datasets.map(
         (d) => html`<div class="w-25 pa2 flex flex-column justify-center">
           <img src=${d.url} />
-          <p class="tc">${d.label}</p>
+          <p class="tc">${d.label()}</p>
         </div>`
       )
     );
@@ -104,11 +114,43 @@ ${tex.block`csv = \frac{1}{|C|} \times \sum_{c \in C}{(|c| - |\overline{c}|)^2}`
   `,
 };
 
-export const resultats: PageObject = {
-  title: 'Résultats',
-  content: md`
+export const times: PageObject = {
+  title: 'Résultats – Temps',
+  content: () => {
+    return md`
 En fait je sais pas quoi mettre puisque des résultats pour les critères on en a beaucoup :(
-  `,
+    `;
+  },
 };
 
-export default [experiments, sdataset, rdataset, criteres, resultats];
+// export const qualite: PageObject = {
+//   title: 'Résultats – Glottolog',
+//   content: (_o, $holder) => {
+//     const { height } = $holder.getBoundingClientRect();
+//     return html`<figure class="flex">
+//       <img src=${realUrl} height="${height}" />
+//       <figcaption class="pl3">
+//         O-SAC est le plus détaillé, suivi par FSAC puis QUAD+ et QUAD+BIG
+//       </figcaption>
+//     </figure>`;
+//   },
+// };
+
+export const resultats: PageObject = {
+  title: 'Résultats – Critères',
+  content: () => {
+    return md`
+En fait je sais pas quoi mettre puisque des résultats pour les critères on en a beaucoup :(
+    `;
+  },
+};
+
+export default [
+  experiments,
+  sdataset,
+  rdataset,
+  times,
+  // qualite,
+  criteres,
+  resultats,
+];
