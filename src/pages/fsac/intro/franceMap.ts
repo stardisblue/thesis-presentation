@@ -1,4 +1,3 @@
-import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 export const tweaked_bounds: [[number, number], [number, number]] = [
