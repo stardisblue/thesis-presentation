@@ -8,6 +8,7 @@ export type Biblio = {
 };
 
 export const bib = {
+  Chen2019: { label: 'Chen2019', url: doi(`10.1007/978-3-030-35802-0_14`) },
   Chen2020: { label: 'Chen2020', url: doi(`10.7155/jgaa.00532`) },
   Dwyer2005: { label: 'Dwyer2005', url: doi('10.1007/11618058_15') },
   Strobelt2012: {

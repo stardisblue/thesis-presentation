@@ -61,11 +61,11 @@ export const prosopographie: PageObject = {
 
       <hr />
       <div class="flex">
-        <div class="w-70">
+        <div class="w-60">
           <h3>Biographies</h3>
           <div class="relative">${$biographies}</div>
         </div>
-        <div class="w-30">
+        <div class="w-40">
           <h3>Relations</h3>
           <div><img src=${imgUrl} /></div>
         </div>
