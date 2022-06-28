@@ -5,7 +5,7 @@ import museumworldUrl from './digital-museum.png';
 import wikipediaUrl from './wikipedia.png';
 
 export const histoire: PageObject = {
-  title: "Une effort grandissant de numérisation de l'histoire",
+  title: "Un effort grandissant de numérisation de l'histoire",
   content: html`
     <h3>Mieux connaître et comprendre le passé</h3>
     <div class="flex">
