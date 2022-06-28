@@ -120,9 +120,9 @@ function gsChart(
     ];
   };
 
-  const initial_small = `translate3d(150px, 1px, 0)scale(0.6)`;
-  const bad_small = 'translate3d(40px, 70px, 0)scale(0.6)';
-  const good_small = 'translate3d(270px, 75px, 0)scale(0.6)';
+  const initial_small = `translate3d(175px, 1px, 0)scale(0.6)`;
+  const bad_small = 'translate3d(0px, 70px, 0)scale(0.6)';
+  const good_small = 'translate3d(310px, 75px, 0)scale(0.6)';
 
   const caption = {
     append: 'text',
@@ -465,7 +465,7 @@ export default {
 
     const { height } = $svgsize.getBoundingClientRect();
     $div.replaceChild(
-      svg`<svg width="100%" height="${height}" viewbox="0, 0, 300, 180"></svg>`,
+      svg`<svg width="100%" height="${height}" viewbox="0, 0, 400, 180"></svg>`,
       $svgsize
     );
 

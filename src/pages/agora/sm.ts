@@ -2,7 +2,6 @@ import { html, svg } from 'htl';
 import _ from 'lodash';
 import { attrs, build, styles } from '../../d3-utils';
 import { PageData } from '../../pages';
-import tex from '../../tex';
 import spreadBad from './datasets/spreadBad.json';
 import spreadInitial from './datasets/spreadInitial.json';
 import spreadGood from './datasets/spreadGood.json';
