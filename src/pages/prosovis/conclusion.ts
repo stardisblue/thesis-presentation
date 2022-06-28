@@ -5,9 +5,7 @@ export default {
   title: `Conclusion`,
   content: (_o, $holder) => {
     $holder.append(
-      html`<h3 class="mt0">
-          ProsoVis : Interface de visualisation analytique.
-        </h3>
+      html`<h3 class="mt0">ProsoVis : Interface de visualisation analytique</h3>
         <p>Composée de deux vues principales</p>
         <p>Les vues sont synchronisées</p>
         <p>

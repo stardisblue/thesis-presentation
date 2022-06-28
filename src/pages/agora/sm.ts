@@ -421,10 +421,9 @@ const spreadStates = [
 const graphs = { initial: spreadInitial, bad: spreadBad, good: spreadGood };
 
 export default {
-  title: `Spread Minimisation`,
+  title: `Minimisation de l'expansion`,
   content: (_opts: PageData, $holder: HTMLDivElement) => {
     $holder.classList.add('flex', 'flex-column');
-    $holder.append(html`<h4>Minimiser l'expansion de ${tex`\mathcal{E}`}</h4>`);
 
     const $svgsize = html`<div class="flex-grow-1"></div>`;
     const $div = html`<div class="flex flex-column flex-grow-1">

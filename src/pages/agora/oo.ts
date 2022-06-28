@@ -118,7 +118,7 @@ export function chartOO() {
 }
 
 export default {
-  title: `Orthogonal Ordering`,
+  title: `Préservation de l'ordre orthogonal`,
   content: (_opts: PageData, $holder: HTMLDivElement) => {
     $holder.classList.add('flex', 'flex-column');
     const $ref = html`<div class="flex-grow-1"></div>`;
@@ -126,11 +126,7 @@ export default {
     const [$svg, $div] = chartOO();
     $svg.addEventListener('pointerup', (e) => e.stopPropagation());
 
-    $holder.append(
-      html`<h4>Préserver l'ordre des noeuds sur ${tex`x`} et ${tex`y`}</h4>`,
-      $ref,
-      $div
-    );
+    $holder.append($ref, $div);
 
     const { height } = $ref.getBoundingClientRect();
     $svg.style.height = '' + height;

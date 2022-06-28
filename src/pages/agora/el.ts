@@ -199,7 +199,7 @@ const elStates = [
 ];
 
 export default {
-  title: 'Edge Length Preservation',
+  title: 'Préservation des longueurs des arêtes',
   content: (_opts: PageData, $holder: HTMLDivElement) => {
     $holder.classList.add('flex', 'flex-column');
     const $ref = html`<div class="flex-grow-1"></div>`;

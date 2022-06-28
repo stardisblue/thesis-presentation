@@ -6,10 +6,13 @@ import type { PageObject } from '../../pages';
 export const title: PageObject = {
   template: 'title',
   title: '',
-  content: () => html`
-    <h2>ProsoVis</h2>
-    <blockquote><h3 class="mt0">Prosopographic Visualisation</h3></blockquote>
-    <p class="pl4">Plateforme de visualisation analytique</p>
+  content: () => html.fragment`
+    <div class="flex items-baseline">
+      <h2>ProsoVis</h2>
+      <div class="pa2"></div>
+      <h3>(Prosopographic Visualisation)</h3>
+    </div>
+    <p class="mt0 pl4 i">Plateforme de visualisation analytique</p>
     <h4 class="gray">AGORA</h4>
     <h4 class="gray">FSAC</h4>
     <h4 class="gray">Conclusion</h4>

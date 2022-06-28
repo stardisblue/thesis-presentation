@@ -23,12 +23,12 @@ ${[
     count: 8,
   },
   {
-    fr: 'Préservation des longeurs des arêtes',
+    fr: 'Préservation des longueurs des arêtes',
     en: 'Edge Length Preservation',
     count: 3,
   },
 ].map(
   ({ fr, en, count }) =>
-    `- <p>${en} (${count}) <em class="smaller">${fr}</em></p>\n\n`
+    `- <p>${fr} (${count}) <em class="smaller">${en}</em></p>\n\n`
 )}`,
 };

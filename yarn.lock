@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"302a7a340686465f@https://api.observablehq.com/d/302a7a340686465f.tgz?v=3":
+  version "1209.0.0"
+  resolved "https://api.observablehq.com/d/302a7a340686465f.tgz?v=3#1ba9a85879d346c38eabc5f977297ca5984410d9"
+
 "@observablehq/inputs@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@observablehq/inputs/-/inputs-0.10.4.tgz#2bac18ea63251729b68deaadd08708a063326df2"

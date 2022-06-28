@@ -28,34 +28,39 @@ export default {
           <td class="pa3">VPSC</td>
           <td class="pa3">PFS'</td>
         </tr>
-      </table>
+      </table>`);
 
-      <h3>Node Overlap Removal Algorithms: an Extended Comparative Study</h3>
+    $holder.after(
+      html`<div>
+        <h3>Node Overlap Removal Algorithms: an Extended Comparative Study</h3>
 
-      <p>
-        <b>Fati CHEN</b>, Laurent Piccinini, Pascal Poncelet & Arnaud Sallaberry
-      </p>
-      <blockquote>
         <p>
-          <i>Graph Drawing 2019 (GD2019)</i>
-          <small
-            >doi:${doi('10.1007/978-3-030-35802-0_14')}</small
-          >
+          <b>Fati CHEN</b>, Laurent Piccinini, Pascal Poncelet & Arnaud
+          Sallaberry
         </p>
-        <p>
-          <i>Journal of Graph Algorithms and Applications (JGAA)</i>
-          <small>doi:${doi('10.7155/jgaa.00532')}</small>
-        </p>
-      </blockquote>`);
+        <blockquote>
+          <p>
+            <i>Graph Drawing 2019 (GD2019)</i>
+            <small>doi:${doi('10.1007/978-3-030-35802-0_14')}</small>
+          </p>
+          <p>
+            <i>Journal of Graph Algorithms and Applications (JGAA)</i>
+            <small>doi:${doi('10.7155/jgaa.00532')}</small>
+          </p>
+        </blockquote>
+      </div>`,
 
-    $holder.after(html`<p class="tr">
-      <b>AGORAjs</b>
-      🔗
-      <a href="https://agorajs.github.io" target="_blank">agorajs.github.io</a>
-      | 📚
-      <a href="https://github.com/agorajs" target="_blank"
-        >github.com/agorajs</a
-      >
-    </p>`);
+      html`<p class="tr">
+        <b>AGORAjs</b>
+        🔗
+        <a href="https://agorajs.github.io" target="_blank"
+          >agorajs.github.io</a
+        >
+        | 📚
+        <a href="https://github.com/agorajs" target="_blank"
+          >github.com/agorajs</a
+        >
+      </p>`
+    );
   },
 } as PageObject;

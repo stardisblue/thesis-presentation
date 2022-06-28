@@ -134,11 +134,11 @@ function makeTable(resultatsSynth: any[], caption: any = '', axis = '') {
 }
 
 const resultatsSynth = [
-  [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
-  [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1],
-  [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0],
-  [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2],
-  [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2],
+  [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+  [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1],
+  [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0],
+  [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2],
+  [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2],
 ];
 
 export const synth = {
@@ -153,13 +153,11 @@ export const synth = {
 const fade = (v: any) => (typeof v === 'number' ? v + 3 : v);
 
 const resultatsSynthOO = [
-  [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
-  [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(fade),
-  [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(fade),
-  [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(
-    fade
-  ),
-  [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(fade),
+  [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+  [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(fade),
+  [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(fade),
+  [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(fade),
+  [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(fade),
 ];
 
 export const synthOO: PageObject = {
@@ -170,8 +168,8 @@ export const synthOO: PageObject = {
       makeTable(
         resultatsSynthOO,
         html`L'ensemble des graphes obtient de bons résultats (<4%) sur ce
-          critère. <em>Scaling</em>, <em>PFS</em> et <em>PFS'</em> sont parfaits
-          (0%).`
+          critère.<br />
+          <em>Scaling</em>, <em>PFS</em> et <em>PFS'</em> sont parfaits (0%).`
       )
     );
 
@@ -187,11 +185,11 @@ export const synthOO: PageObject = {
 };
 
 const resultatsSynth2 = [
-  [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
-  [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1],
-  [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0],
-  [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2],
-  [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2],
+  [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+  [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1],
+  [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0],
+  [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2],
+  [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2],
 ];
 
 export const synth2 = {
@@ -219,17 +217,13 @@ const resultatsSynth12 = (() => {
     return i > 2 ? fade(v) : v;
   };
   return [
-    [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
-    [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(fade12),
-    [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(
+    [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
+    [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(
       fade12
     ),
-    [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(
-      fade12
-    ),
-    [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(
-      fade12
-    ),
+    [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(fade12),
+    [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(fade12),
+    [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(fade12),
   ];
 })();
 
@@ -284,17 +278,13 @@ const resultatsSynth34 = (() => {
     return i < 3 || i > 4 ? fade(v) : v;
   };
   return [
-    [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
-    [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(fade12),
-    [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(
+    [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
+    [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(
       fade12
     ),
-    [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(
-      fade12
-    ),
-    [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(
-      fade12
-    ),
+    [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(fade12),
+    [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(fade12),
+    [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(fade12),
   ];
 })();
 
@@ -373,17 +363,13 @@ const resultatsSynth5 = (() => {
     return i < 5 ? fade(v) : v;
   };
   return [
-    [html`<b>Orthogonal Ordering</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
-    [html`<b>Spread Minimisation</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(fade12),
-    [html`<b>Global Shape Preservation</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(
+    [html`<b>Ordre Orthogonal</b>`, 0, 0, 1, 1, 1, 0, 1, 1, 1].map(fade12),
+    [html`<b>Minimisation expansion</b>`, 2, 2, 1, 0, 0, 1, 1, 1, 1].map(
       fade12
     ),
-    [html`<b>Node Movement Minimisation</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(
-      fade12
-    ),
-    [html`<b>Edge Length Preservation</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(
-      fade12
-    ),
+    [html`<b>Rapport de forme</b>`, 0, 2, 1, 1, 0, 0, 0, 0, 0].map(fade12),
+    [html`<b>Mouv. des noeuds</b>`, 0, 2, 1, 0, 0, 1, 1, 2, 2].map(fade12),
+    [html`<b>Longueurs arêtes</b>`, 0, 1, 1, 0, 1, 0, 1, 1, 2].map(fade12),
   ];
 })();
 

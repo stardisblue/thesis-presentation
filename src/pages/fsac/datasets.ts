@@ -17,11 +17,11 @@ export const experiments: PageObject = {
   content: md`
 **4 Algorithmes**
 
-> O-SAC ${cite(bib.Scheepens2014)} – **FSAC** – QUAD ${cite(
+> (I)O-SAC ${cite(bib.Scheepens2014)} – **FSAC** – QUAD+ ${cite(
     bib.Castermans2019
   )} – QUAD+BIG ${cite(bib.Castermans2019)}
 
-**4000 jeux de données synthétiques**
+**4000 Jeux de données synthétiques**
 
 > Uniforme – Normale – Disques de poisson  – Bruit de Perlin
 >

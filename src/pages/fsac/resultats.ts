@@ -61,19 +61,19 @@ export const timesreal: PageObject = {
   title: '📊 Résultats — Temps',
   content: () => html.fragment`<h3>Données Réelles</h3>
       <table class="bt bb collapse tr center">
-        <tr class="tc bb">
-          <th class="pa2"></th>
-          <th class="pa2">O-SAC</th>
-          <th class="pa2">IO-SAC</th>
-          <th class="pa2">QUAD+</th>
-          <th class="pa2">QUAD+BIG</th>
-          <th class="pa2">FSAC</th>
+        <tr class="tr bb">
+          <th class="pa3"></th>
+          <th class="pa3">O-SAC</th>
+          <th class="pa3">IO-SAC</th>
+          <th class="pa3">QUAD+</th>
+          <th class="pa3">QUAD+BIG</th>
+          <th class="pa3">FSAC</th>
         </tr>
         ${realTimes.map(
           (v) => html`<tr>
             ${v.map(
               (i, j) =>
-                html`<td class="pa2 ${j === 0 ? 'tl pr3' : ''}">${i}</td>`
+                html`<td class="pv2 ph3 ${j === 0 ? 'tl pr3' : ''}">${i}</td>`
             )}
           </tr>`
         )}
@@ -98,26 +98,16 @@ export const timesreal: PageObject = {
 
 export const criteres: PageObject = {
   title: 'Critères de comparaison',
-  content: (_o, $holder) => {
-    $holder.classList.add('flex');
+  content: () => html.fragment`
+      <h3>Facteur de compression</h3>
+      ${tex.block`cf = 1 - \frac{|C|}{|X|}`}
 
-    return html.fragment`
-      <div class="w-100">
-        <h3>Facteurs de compression</h3>
-        ${tex.block`cf = 1 - \frac{|C|}{|X|}`}
-      </div>
-      <div class="pa2"></div>
-      <div class="w-100">
-        <h3>Distance moyenne au centre</h3>
-        ${tex.block`mdc = \frac{1}{|X|} \times \sum_{c \in C}{\sum_{p \in C}{||x(c) - x(p)||^2}}`}
-      </div>
-      <div class="pa2"></div>
-      <div class="w-100">
-        <h3>Variance de la taille des clusters</h3>
-        ${tex.block`csv = \frac{1}{|C|} \times \sum_{c \in C}{(|c| - |\overline{c}|)^2}`}
-      </div>
-    </div> `;
-  },
+      <h3>Distance moyenne au centre</h3>
+      ${tex.block`mdc = \frac{1}{|X|} \times \sum_{c \in C}{\sum_{p \in C}{||x(c) - x(p)||^2}}`}
+
+      <h3>Variance de la taille des clusters</h3>
+      ${tex.block`csv = \frac{1}{|C|} \times \sum_{c \in C}{(|c| - |\overline{c}|)^2}`}
+    `,
 };
 
 import facteurUrl from './result/facteur-compression.png';
@@ -137,13 +127,13 @@ export const resultats: PageObject = {
         </figure>
         <div class="pa2"></div>
         <figure class="w-100 tc">
-          <img src="${varianceUrl}" />
-          <figcaption>Variance tailles des clusters</figcaption>
+          <img src="${distanceUrl}" />
+          <figcaption>Distance au centre</figcaption>
         </figure>
         <div class="pa2"></div>
         <figure class="w-100 tc">
-          <img src="${distanceUrl}" />
-          <figcaption>Distance au centre</figcaption>
+          <img src="${varianceUrl}" />
+          <figcaption>${tex`\sigma^2`} taille des clusters</figcaption>
         </figure>
       </div>`
     );

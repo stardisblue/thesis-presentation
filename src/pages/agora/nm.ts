@@ -235,10 +235,10 @@ const nmStates = [
 ];
 
 export default {
-  title: 'Node Movement Minimisation',
+  title: 'Minimisation du mouvement des noeuds',
   content: (_opts: PageData, $holder: HTMLDivElement) => {
     $holder.classList.add('flex', 'flex-column');
-    $holder.append(html`<h4>Minimiser le mouvement des noeuds</h4>`);
+
     const $ref = html`<div class="flex-grow-1"></div>`;
     $holder.append($ref);
     $holder.append(html`<p class="caption">Initial ${tex`\mathcal{E}`}</p>`);

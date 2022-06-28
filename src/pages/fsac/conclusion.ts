@@ -6,9 +6,9 @@ export default {
   content: (_o, $holder) => {
     $holder.append(
       html`<h3 class="mt0">FSAC : Méthode d'agglomération</h3>
+        <p>Extrêmement rapide</p>
         <p>Produits des résultats similaires à l'état de l'art</p>
-        <p>Extremement rapide</p>
-        <p>Est disponible en deux variantes : en temps réel ou hors ligne.</p>
+        <p>Disponible en deux variantes : en temps réel ou hors ligne.</p>
         <p>Article en cours de rédaction</p>`
     );
     $holder.after(html`<p class="tr">

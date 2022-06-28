@@ -438,10 +438,9 @@ const gsStates = [
 const graphs = { initial: spreadInitial, bad: gsBad, good: spreadGood };
 
 export default {
-  title: `Global Shape Preservation`,
+  title: `Conservation du rapport de forme`,
   content: (_opts: PageData, $holder: HTMLDivElement) => {
     $holder.classList.add('flex', 'flex-column');
-    $holder.append(html`<h4>Préserver le rapport de forme</h4>`);
 
     const funct = tex.block`\max{\left(\frac{w'_{bb} \times h_{bb}} {h'_{bb} \times w_{bb}}, \frac{h'_{bb} \times w_{bb}} {w'_{bb} \times h_{bb}}\right)}`;
 
@@ -456,7 +455,7 @@ export default {
         <span class="caption"
           ><span><i>Improved Aspect Ratio</i> ${cite(bib.Chen2020)}</span>
           <div style="text-align: right">
-            <small>extended from ${cite(bib.Li2005)}</small>
+            <small>étendu depuis ${cite(bib.Li2005)}</small>
           </div></span
         >
       </div>

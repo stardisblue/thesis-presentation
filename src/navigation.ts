@@ -25,7 +25,7 @@ export function navigation({
     'KeyL',
     'KeyS',
     'KeyD',
-    'Space',
+    // 'Space',
   ],
   stopPropagation = false,
 }: NavigationOptions = {}) {

@@ -14,10 +14,7 @@ export const focusgraph: PageObject = {
         <figcaption>Graphe de relations</figcaption>
       </figure>`,
       html`<div class="pa2"></div>`,
-      html`<figure class="w-100 flex flex-column justify-between o-40">
-        <img class="shadow-4" src="${carteUrl}" />
-        <figcaption>Carte</figcaption>
-      </figure>`
+      html`<figure class="w-100"></figure>`
     );
   },
 };

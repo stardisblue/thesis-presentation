@@ -4,9 +4,15 @@ const perspectives: PageObject = {
   title: 'Perspectives',
   content: () => html`
     <h4>ProsoVis</h4>
-    meilleure représentation des incertitudes
+    <p class="pl4 measure lh-copy">
+      Intégrer plus finement la représentation de l'incertitude dans les
+      différentes vues.
+    </p>
     <h4>AGORA & FSAC</h4>
-    un système hybride
+    <p class="pl4 measure  lh-copy">
+      Développer un système hybride ; agglomérer ou déplacer les éléments en
+      fonction d'un facteur de chevauchement.
+    </p>
   `,
 };
 export default perspectives;

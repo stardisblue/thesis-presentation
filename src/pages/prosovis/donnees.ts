@@ -14,6 +14,6 @@ Base de données sur l'activité des professeurs de droits de 1800 à 2000.
 > &nbsp;${tex`\approx 5000`} évènements
 
 
-#### Quelle est la carrière des professeurs ayant enseigné à Grenoble début du XIX siècle.
+#### Quelle est la carrière des professeurs ayant enseignés à Grenoble au début du XIX<sup>ième</sup> siècle ?
   `,
 };

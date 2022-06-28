@@ -31,7 +31,7 @@ export const rtree: PageObject = {
       ></div>
       <div id="observablehq-rtreeview-14fea8e0"></div>
       <p class="mv0" style="font-size: 0.8em">
-        R-Arbre ${cite(bib.Manolopoulos2006)}
+        R-Tree ${cite(bib.Manolopoulos2006)}
       </p>
     </div>`;
     const $comments = html`<div class="w-100"></div>`;

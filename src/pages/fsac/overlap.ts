@@ -25,7 +25,7 @@ export const overlap: PageObject = {
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
 
     const $svg = svg`<svg viewBox="0 0 1000 610" width="${x(1000)}">
-    <g stroke=black>
+    <g stroke=black stroke-width=5 > 
     ${circles.map(
       (c) => svg`<g transform="translate(${c.x}, ${c.y})">
       <circle r=${c.r} fill=blue fill-opacity=0.1 />`
@@ -44,7 +44,7 @@ export const radius: PageObject = {
     const { width } = $svgcontainer.getBoundingClientRect();
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
     const $svg = svg`<svg viewBox="0 0 1000 610" width=${x(1000)} >
-    <g stroke=black>
+    <g stroke=black stroke-width=5 > 
     ${circles.map(
       (c) => svg`<g transform="translate(${c.x}, ${c.y})" opacity=${
         c.label !== 'S' ? 0.2 : 1
@@ -84,7 +84,7 @@ export const naming: PageObject = {
     const { width } = $svgcontainer.getBoundingClientRect();
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
     const $svg = svg`<svg viewBox="0 0 1000 610" width=${x(1000)} >
-    <g stroke=black>
+    <g stroke=black stroke-width=5 > 
     ${circles.map(
       (c) => svg`<g transform="translate(${c.x}, ${c.y})" opacity=${
         c.label !== 'S' ? 0.2 : 1
@@ -119,7 +119,7 @@ export const green: PageObject = {
     const { width } = $svgcontainer.getBoundingClientRect();
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
     const $svg = svg`<svg viewBox="0 0 1000 610" width=${x(1000)} >
-    <g stroke=black>
+    <g stroke=black stroke-width=5 > 
     ${circles.map(
       (c) => svg`<g transform="translate(${c.x}, ${c.y})" opacity=${
         c.label === 'T' || c.label === 'S' ? 1 : 0.2
@@ -169,7 +169,7 @@ export const newcircle: PageObject = {
     const { width } = $svgcontainer.getBoundingClientRect();
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
     const $svg = svg`<svg viewBox="0 0 1000 610" width=${x(1000)} >
-    <g stroke=black>
+    <g stroke=black stroke-width=5 > 
     <g opacity=0.2>
       ${circles.map(
         (c) => svg`<g transform="translate(${c.x}, ${c.y})">
@@ -220,7 +220,7 @@ export const again: PageObject = {
     const { width } = $svgcontainer.getBoundingClientRect();
     const x = scaleLinear().domain([0, 1000]).range([0, width]);
     const $svg = svg`<svg viewBox="0 0 1000 610" width=${x(1000)} >
-    <g stroke=black>
+    <g stroke=black stroke-width=5 >
     <g>
       ${circles
         .filter((c) => c.label !== 'S' && c.label !== 'T')
