@@ -13,7 +13,7 @@ import { franceMap } from './intro/franceMap';
 // import realUrl from './dataset/qualitative.png';
 
 export const experiments: PageObject = {
-  title: 'Dispositif Experimental',
+  title: '📏 Méthodologie 📐',
   content: md`
 **4 Algorithmes**
 

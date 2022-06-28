@@ -33,7 +33,7 @@ const realTimes = [
   ['Siprojuris', tex`119`, tex`44`, tex`89`, tex`95`, tex`\mathbf{<1}`],
 ];
 export const timessynth: PageObject = {
-  title: 'Résultats — Temps',
+  title: '📊 Résultats — Temps',
   content: (_o, $holder) => {
     $holder.classList.add('flex', 'flex-column');
     const $temp = html`<div class="flex-grow-1"></div>`;
@@ -58,7 +58,7 @@ export const timessynth: PageObject = {
 };
 
 export const timesreal: PageObject = {
-  title: 'Résultats — Temps',
+  title: '📊 Résultats — Temps',
   content: () => html.fragment`<h3>Données Réelles</h3>
       <table class="bt bb collapse tr center">
         <tr class="tc bb">
@@ -84,7 +84,7 @@ export const timesreal: PageObject = {
 };
 
 // export const qualite: PageObject = {
-//   title: 'Résultats – Glottolog',
+//   title: '📊 Résultats — Glottolog',
 //   content: (_o, $holder) => {
 //     const { height } = $holder.getBoundingClientRect();
 //     return html`<figure class="flex">
@@ -125,7 +125,7 @@ import varianceUrl from './result/variance-taille.png';
 import distanceUrl from './result/distance-centre.png';
 
 export const resultats: PageObject = {
-  title: 'Résultats — Critères',
+  title: '📊 Résultats — Critères',
 
   content: (_o, $holder) => {
     $holder.classList.add('flex', 'flex-column', 'justify-center');
