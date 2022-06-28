@@ -51,6 +51,10 @@ export const bib = {
     label: 'Perlin1985',
     url: doi('10.1145/325334.325247'),
   },
+  Hyvonen2019: {
+    label: 'Hyvönen2019',
+    url: doi('10.1007/978-3-030-21348-0_37'),
+  },
 };
 
 export function cite(cite: string | Biblio) {

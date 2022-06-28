@@ -8,13 +8,16 @@ import fsac from './fsac';
 import question from './question';
 import conclusion from './conclusion';
 import merci from './merci';
+import { focusgraph, focusmap } from './transition';
 
 const pages: (PageObject | ((options: PageData) => any))[] = [
   couverture,
   ...intro,
   question,
   ...prosovis,
+  focusgraph,
   ...agora,
+  focusmap,
   ...fsac,
   ...conclusion,
   merci,

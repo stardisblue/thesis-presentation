@@ -25,7 +25,7 @@ const table = html`<table style="border-collapse: collapse">
 </table>`;
 
 export const biographie2: PageObject = {
-  title: 'Biographie – Des données complexes',
+  title: 'Biographie — Des données complexes',
   content: md`
 <p class="mt0">${mdi`**Fati Chen** est **né** à **Changji** le **16 novembre 1994**.`}</p>
 

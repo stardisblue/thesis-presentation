@@ -49,14 +49,14 @@ export const biographie: PageObject = {
     const $mapdiv = html`<div class="flex-grow-1"></div>`;
 
     $holder.append(html`<div class="flex flex-grow-1">
-      <div class="w-50">
-        <div class="step" style="visibility: hidden">
-          <p>Individu Concerné :</p>
+      <div class="w-100">
+        <div class="step o-0">
+          <p class="mt0">Individu Concerné :</p>
           <ul>
             <li>Fati Chen</li>
           </ul>
         </div>
-        <div class="step" style="visibility: hidden">
+        <div class="step o-0">
           <p>Propriétés :</p>
           <ul>
             <li>Naissance</li>
@@ -64,14 +64,14 @@ export const biographie: PageObject = {
             <li>Obtention du Master</li>
           </ul>
         </div>
-        <div class="step" style="visibility: hidden">
+        <div class="step o-0">
           <p>Données Temporelles :</p>
           ${timeline}
         </div>
       </div>
-      <div class="w-50">
-        <div class="step flex flex-column h-100" style="visibility: hidden">
-          <p>Données Spatiales :</p>
+      <div class="w-100">
+        <div class="step flex flex-column h-100 o-0">
+          <p class="mt0">Données Spatiales :</p>
           ${$mapdiv}
         </div>
       </div>
@@ -86,7 +86,7 @@ export const biographie: PageObject = {
         $holder
           .querySelectorAll('.step')
           .forEach((v, i) =>
-            d3.select(v).style('visibility', page <= i ? 'hidden' : '')
+            d3.select(v).classed('o-0', page <= i ? true : false)
           )
       )
       .bind($holder)

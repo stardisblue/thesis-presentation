@@ -202,8 +202,10 @@ export const newcircle: PageObject = {
     );
 
     $div.append(
-      tex.block`c_W = \frac{r_S^2 \times c_S + r_T^2 \times c_T }{r_S^2 + r_T^2}`,
-      tex.block`r_W = \sqrt{r_S^2 + r_T^2}`
+      html`<p>
+        ${tex`c_W = \frac{r_S^2 \times c_S + r_T^2 \times c_T }{r_S^2 + r_T^2}`}
+      </p> `,
+      html`<p>${tex`r_W = \sqrt{r_S^2 + r_T^2}`}</p>`
     );
   },
 };

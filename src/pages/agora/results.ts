@@ -472,11 +472,109 @@ const resultatsTimes = (() => {
   ];
 })();
 
+function makeTimeTable(resultatsSynth: any[], caption: any = '', axis = '') {
+  return html.fragment`<table width="100%">
+      <colgroup>
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+        <col span="1" style="width: 10%;" />
+      </colgroup>
+      <thead>
+        <tr class="time-3-headline">
+          <th>${axis}</th>
+          <th class="time-3-title">Scaling</th>
+          <th class="time-3-title">PFS</th>
+          <th class="time-3-title">FTA</th>
+          <th class="time-3-title">VPSC</th>
+          <th class="time-3-title">RWordle-L</th>
+          <th class="time-3-title">PFS'</th>
+          <th class="time-3-title">PRISM</th>
+          <th class="time-3-title">GTREE</th>
+          <th class="time-3-title">Diamond</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${resultatsSynth.map(
+          (row) =>
+            html`<tr>
+              ${row.map((v: any) => {
+                if (typeof v !== 'number') {
+                  return html`<td class="time-3-title">${v}</td>`;
+                } else {
+                  return html`<td class="time-3-${v}"></td>`;
+                }
+              })}
+            </tr>`
+        )}
+      </tbody>
+      <caption class="caption" style="caption-side:bottom">
+        ${caption}
+      </caption>
+    </table>
+    <style>
+      .time-3-headline .time-3-title {
+        font-weight: normal;
+        font-style: italic;
+        font-size: 0.75em;
+        height: auto;
+      }
+      .time-3-title,
+      .time-3-0,
+      .time-3-1,
+      .time-3-2,
+      .time-3-3,
+      .time-3-4,
+      .time-3-5,
+      .time-3-6,
+      .time-3-7,
+      .time-3-8 {
+        height: 2em;
+      }
+      .time-3-title {
+        text-align: center;
+        font-size: 0.75em;
+        vertical-align: middle;
+      }
+      .time-3-0,
+      .time-3-3,
+      .time-3-6 {
+        background-color: #9fcd62;
+      }
+      .time-3-1,
+      .time-3-4,
+      .time-3-7 {
+        background-color: #f6c142;
+      }
+      .time-3-2,
+      .time-3-5,
+      .time-3-8 {
+        background-color: #ea3323;
+      }
+
+      .time-3-3,
+      .time-3-4,
+      .time-3-5 {
+        opacity: 0.1;
+      }
+      .time-3-6,
+      .time-3-7,
+      .time-3-8 {
+        opacity: 0.5;
+      }
+    </style>`;
+}
 export const times = {
   title: '📊 Résultats — temps',
   content: () =>
     html`<div class="relative">
-      ${makeTable(
+      ${makeTimeTable(
         resultatsTimes,
         'Valeurs aggrégées des temps pour les graphes synthétiques.',
         'Noeuds'

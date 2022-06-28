@@ -56,9 +56,7 @@ function SimplePage<T>(
   { template = 'full', ...props }: PageObject,
   data: T
 ): PageElement {
-  const $title = html`<h2 class="measure noto">
-    ${create(props.title, data)}
-  </h2>`;
+  const $title = html`<h2 class="measure">${create(props.title, data)}</h2>`;
 
   const $content = html`<div></div>`;
   const $footer = html`<div class="pt4">
@@ -72,7 +70,7 @@ function SimplePage<T>(
     class="absolute"
     style="inset:0;z-index:-1"
   ></div>`;
-  const $page = html`<div class="slides h-100 w-100 flex roboto relative" />
+  const $page = html`<div class="slides h-100 w-100 flex relative" />
     ${$background}
     <div class="w-100 flex flex-column">${$title}${$content}${$footer}</div> `;
 

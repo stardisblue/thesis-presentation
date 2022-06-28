@@ -1,20 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
-.lato {
-  font-family: 'Lato', sans-serif;
-}
-
-.merry-weather {
-  font-family: 'Merriweather', serif;
-}
-
-.eb-garamond {
-  font-family: 'EB Garamond', serif;
-}
-
-.montserrat {
-  font-family: 'Montserrat', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 .noto {
   font-family: 'Noto Serif', serif;
@@ -28,8 +12,13 @@
   padding: 5% 10%;
 }
 
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-block-start: .5em;
+  font-family: 'Noto Serif', serif;
 }
 
 
@@ -92,4 +81,8 @@ form.inputs  input[type=range] {
   margin: 0;
   margin-left: 6.5px; 
   min-width: 0;
+}
+
+small, .smaller{
+  font-size: 0.8em;
 }

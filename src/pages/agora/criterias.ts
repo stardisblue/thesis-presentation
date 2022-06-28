@@ -29,6 +29,6 @@ ${[
   },
 ].map(
   ({ fr, en, count }) =>
-    `- ${en} (${count}) *<small style="font-size: 0.9em">${fr}</small>*\n\n`
+    `- <p>${en} (${count}) <em class="smaller">${fr}</em></p>\n\n`
 )}`,
 };

@@ -5,11 +5,12 @@ export const tweaked_bounds: [[number, number], [number, number]] = [
   [51.08975448772439, 9.55682784139207],
 ];
 
-export function franceMap(container: HTMLDivElement) {
+export function franceMap(container: HTMLElement, options: L.MapOptions = {}) {
   const map = L.map(container, {
     zoomControl: false,
     zoomSnap: 0.01,
     renderer: L.canvas(),
+    ...options,
   }).fitBounds(tweaked_bounds, { maxZoom: 5.4 });
   // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   //   attribution:
